@@ -25,7 +25,7 @@ jobs:
     
     # change base tag in all html files to include subfolder
     - name: Change base tag
-      working-directory: release/output/wwwroot
+      working-directory: release/wwwroot
       run: |
         find . -name "*.html" | while read htmlFile; do
             sed -i 's/<base href="\/"/<base href="\/HungryPig\/"/g' $htmlFile
