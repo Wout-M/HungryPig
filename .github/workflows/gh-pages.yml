@@ -1,10 +1,10 @@
 name: Deploy to GitHub Pages
-
+ 
 # Run workflow on every push to the master branch
 on:
   push:
     branches: [ main ]
-
+ 
 jobs:
   deploy-to-github-pages:
     # use ubuntu-latest image to run steps on
@@ -13,28 +13,28 @@ jobs:
     # uses GitHub's checkout action to checkout code form the master branch
     - uses: actions/checkout@v2
     
-    # sets up .NET Core SDK 6.0.2
+    # sets up .NET Core SDK 6.0.200
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.200
-
+ 
     # publishes Blazor project to the Prerender/output folder
     - name: Publish .NET Core Project
       run: dotnet publish HungryPig/HungryPig.csproj -c Release -o Prerender/output --nologo
-
+    
     # Use NodeJS react-snap utitility to prerender static website
     - name: prerender Blazor client
       working-directory: Prerender
       run: npx react-snap
-
+    
     # change base tag in all html files to include subfolder
     - name: Change base tag
       working-directory: Prerender/output/wwwroot
       run: |
         find . -name "*.html" | while read htmlFile; do
             sed -i 's/<base href="\/"/<base href="\/BlazorWasmPrerender\/"/g' $htmlFile
-            sed -i 's/<script type="text\/javascript">var Module; window.__wasmmodulecallback__(); delete window.__wasmmodulecallback__;<\/script><script src="_framework\/dotnet.6.0.200.js" defer="" integrity="sha256-SWZOE2EsCqc\/7dPgJrcFqUvVvdeJ9cipeZ2NFMC9v2s=" crossorigin="anonymous"><\/script>//g' $htmlFile
+            sed -i 's/<script type="text\/javascript">var Module; window.__wasmmodulecallback__(); delete window.__wasmmodulecallback__;<\/script><script src="_framework\/dotnet.6.0.2.js" defer="" integrity="sha256-SWZOE2EsCqc\/7dPgJrcFqUvVvdeJ9cipeZ2NFMC9v2s=" crossorigin="anonymous"><\/script>//g' $htmlFile
         done
     # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
     - name: Add .nojekyll file
@@ -43,6 +43,6 @@ jobs:
     - name: Commit wwwroot to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: gh-pages
-        folder: Prerender/output/wwwroot
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: Prerender/output/wwwroot
