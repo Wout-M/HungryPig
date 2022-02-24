@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "HungryPig.dll": "sha256-H8rUkOSQ0luYuLVR10B5YpDZzyjQlEkm44j1cgVvBQs=",
+      "HungryPig.dll": "sha256-UJHDFPtFjErs497eci0j1\/2FvJHNQ7Ld6LUTREPuuP4=",
       "Microsoft.AspNetCore.Components.dll": "sha256-eD8rgfrAUmnsK+z0OyDK5GDlvhJcaPT\/jXEhCYrrDQc=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-LqeJ8RNmZT6bfAdjq0tuKRjrzgBcMTplqxln2KXiQbM=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-IaNL\/PzPqyR2ujl51x9bA4vVZF\/C4TsXvYXsgIcpAUU=",
