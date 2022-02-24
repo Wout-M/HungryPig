@@ -13,31 +13,36 @@ jobs:
     # uses GitHub's checkout action to checkout code form the master branch
     - uses: actions/checkout@v2
     
-    # sets up .NET Core SDK 3.1
+    # sets up .NET Core SDK 6.0.2
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 6.0.2
 
-    # publishes Blazor project to the release-folder
+    # publishes Blazor project to the Prerender/output folder
     - name: Publish .NET Core Project
-      run: dotnet publish HungryPig/HungryPig.csproj -c Release -o release --nologo
-    
-    # changes the base-tag in index.html from '/' to 'HungryPig' to match GitHub Pages repository subdirectory
-    - name: Change base-tag in index.html from / to HungryPig
-      run: sed -i 's/<base href="\/" \/>/<base href="\/HungryPig\/" \/>/g' release/wwwroot/index.html
-    
-    # copy index.html to 404.html to serve the same file when a file is not found
-    - name: copy index.html to 404.html
-      run: cp release/wwwroot/index.html release/wwwroot/404.html
+      run: dotnet publish HungryPig/HungryPig.csproj -c Release -o Prerender/output --nologo
 
+    # Use NodeJS react-snap utitility to prerender static website
+    - name: prerender Blazor client
+      working-directory: Prerender
+      run: npx react-snap
+
+    # change base tag in all html files to include subfolder
+    - name: Change base tag
+      working-directory: Prerender/output/wwwroot
+      run: |
+        find . -name "*.html" | while read htmlFile; do
+            sed -i 's/<base href="\/"/<base href="\/BlazorWasmPrerender\/"/g' $htmlFile
+            sed -i 's/<script type="text\/javascript">var Module; window.__wasmmodulecallback__(); delete window.__wasmmodulecallback__;<\/script><script src="_framework\/dotnet.6.0.2.js" defer="" integrity="sha256-SWZOE2EsCqc\/7dPgJrcFqUvVvdeJ9cipeZ2NFMC9v2s=" crossorigin="anonymous"><\/script>//g' $htmlFile
+        done
     # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
     - name: Add .nojekyll file
-      run: touch release/wwwroot/.nojekyll
+      run: touch Prerender/output/wwwroot/.nojekyll
       
     - name: Commit wwwroot to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: release/wwwroot
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
+        folder: Prerender/output/wwwroot
