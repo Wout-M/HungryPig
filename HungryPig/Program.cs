@@ -1,4 +1,4 @@
-using HungryPig;
+using HungryPig.UI;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
