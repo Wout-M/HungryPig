@@ -17,18 +17,38 @@ namespace HungryPig.Services
 
         public Game InitGame(Mode mode, string name)
         {
+            var levels = Combinations
+                .Select(combination => new Level()
+                {
+                    Name = $"P{combination.Item1}-{combination.Item2}",
+                    Left = combination.Item1,
+                    Right = combination.Item2,
+                })
+                .ToList();
+
+            levels.InsertRange(0, new List<Level>()
+            {
+                new Level()
+                {
+                    Name = "Oefenitem1",
+                    Left = 1,
+                    Right = 2,
+                },
+                new Level()
+                {
+                    Name = "Oefenitem2",
+                    Left = 6,
+                    Right = 8
+                }
+            });
+
             return new Game()
             {
                 Name = name,
                 Mode = mode,
                 Date = DateTime.Now,
-                Levels = Combinations.Select(combination => new Level()
-                {
-                    Name
-                    Left = combination.Item1,
-                    Right = combination.Item2,
-                }).ToList();
-            }
+                Levels = levels
+            };
         }
     }
 }
