@@ -4,7 +4,7 @@ namespace HungryPig.Services
 {
     public interface IGameService
     {
-
+        Game InitGame(Mode mode, string name);
     }
 
     public class GameService : IGameService
@@ -17,7 +17,9 @@ namespace HungryPig.Services
 
         public Game InitGame(Mode mode, string name)
         {
+            var rnd = new Random();
             var levels = Combinations
+                .OrderBy(combination => rnd.Next())
                 .Select(combination => new Level()
                 {
                     Name = $"P{combination.Item1}-{combination.Item2}",

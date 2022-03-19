@@ -1,4 +1,11 @@
 ﻿@page "/"
 
 <MudText Typo="Typo.h3">StartMenu</MudText>
-<MudButton Link="tutorial">Start</MudButton>
+<MudTextField @bind-Value="Name" Label="Vul hier je naam in" Variant="Variant.Outlined"/>
+<MudSelect @bind-Value="Mode" Label="Selecteer de spelversie">
+    @foreach (Mode item in Enum.GetValues(typeof(Mode)))
+    {
+        <MudSelectItem Value="@item">@item.Description()</MudSelectItem>
+    }
+</MudSelect>
+<MudButton OnClick="StartButtonClicked">Start</MudButton>
