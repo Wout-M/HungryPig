@@ -1,3 +1,14 @@
 ﻿@page "/tutorial"
 
-<GameLayout/>
+<div class="d-flex flex-grow-1 gap-4">
+    @if (CurrentTutorialLevel != null)
+    {
+         <div class="d-inline-flex pa-4 flex-grow-1 justify-center">
+            <TutorialField CurrentToturialLevel="@CurrentTutorialLevel" Mode="@Mode" Left="true"/>
+        </div>
+        <div class="d-inline-flex pa-4 flex-grow-1 justify-center">
+            <TutorialField CurrentToturialLevel="@CurrentTutorialLevel" Mode="@Mode" Left="false"/>
+        </div>
+    }
+</div>
+

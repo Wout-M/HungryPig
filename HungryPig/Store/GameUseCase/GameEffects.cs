@@ -14,10 +14,11 @@ namespace HungryPig.Store.GameUseCase
         }
 
         [EffectMethod]
-        public void HandleInitGameAction(InitGameAction action, IDispatcher dispatcher)
+        public Task HandleInitGameAction(InitGameAction action, IDispatcher dispatcher)
         {
             var game = _gameservice.InitGame(action.Mode, action.Name);
             dispatcher.Dispatch(new InitGameResultAction(game));
+            return Task.CompletedTask;
         }
     }
 }

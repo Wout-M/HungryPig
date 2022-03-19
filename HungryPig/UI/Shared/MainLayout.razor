@@ -5,18 +5,11 @@
 <MudSnackbarProvider />
 
 <MudLayout>
-   @* <MudAppBar Elevation="0">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+   <MudAppBar Elevation="0">
+        <MudButton Link="/" Color="Color.Inherit">Hungry Pig</MudButton>
         <MudSpacer />
-        <MudIconButton Icon="@Icons.Custom.Brands.MudBlazor" Color="Color.Inherit" Link="https://mudblazor.com/" Target="_blank" />
-        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Link="https://github.com/MudBlazor/MudBlazor/" Target="_blank" />
-    </MudAppBar>*@
-    <MudDrawer @bind-Open="_drawerOpen" Variant="DrawerVariant.Mini" Elevation="1">
-        <MudDrawerHeader>
-
-        </MudDrawerHeader>
-        <NavMenu />
-    </MudDrawer>
+        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Link="https://github.com/Wout-M" Target="_blank" />
+    </MudAppBar>
     <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.Large" Class="pt-16">
             @Body

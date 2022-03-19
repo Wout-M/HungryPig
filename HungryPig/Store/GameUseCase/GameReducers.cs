@@ -5,7 +5,7 @@ namespace HungryPig.Store.GameUseCase
 {
     public class GameReducers
     {
-        [ReducerMethod()]
-        public static GameState InitGameAction(InitGameResultAction action, GameState state) => new GameState(action.Game);
+        [ReducerMethod]
+        public static GameState InitGameAction(GameState state, InitGameResultAction action) => new GameState(action.Game);
     }
 }
