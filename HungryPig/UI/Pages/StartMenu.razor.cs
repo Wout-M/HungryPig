@@ -19,7 +19,7 @@ namespace HungryPig.UI.Pages
         {
             var action = new InitGameAction(Mode, Name);
             Dispatcher.Dispatch(action);
-            NavigationManager.NavigateTo("/tutorial");
+            NavigationManager.NavigateTo("tutorial");
         }
     }
 }
