@@ -59,11 +59,11 @@ namespace HungryPig.UI.Pages
             NextAllowed = false;
             if (GameState.Value.Game.CurrentLevelId == (GameState.Value.Game.Levels.Count / 2 - 1))
             {
-                NavigationManager.NavigateTo("/pause");
+                NavigationManager.NavigateTo("pause");
             }
             else if (GameState.Value.Game.CurrentLevelId == GameState.Value.Game.Levels.Count - 1)
             {
-                NavigationManager.NavigateTo("/end");
+                NavigationManager.NavigateTo("end");
             }
             else
             {

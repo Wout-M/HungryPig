@@ -67,7 +67,7 @@ namespace HungryPig.UI.Pages
             }
             else
             {
-                NavigationManager.NavigateTo("/game");
+                NavigationManager.NavigateTo("game");
             }
         }
     }
