@@ -19,7 +19,7 @@ namespace HungryPig.UI.Pages
 
             await DownloadFileService.ClearBuffers();
             await DownloadFileService.AddBuffer(bytes);
-            await DownloadFileService.DownloadFile($"Data {game.Name} {game.Date:g}", bytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            await DownloadFileService.DownloadFile($"Data {game.Name} {game.Date:g}.xlsx", bytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
         }
     }
 }
