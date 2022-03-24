@@ -1,6 +1,6 @@
 ﻿@if (!string.IsNullOrEmpty(Name))
 {
-    <MudImage Src="@Name.GetImageURL(Mode, Left)" Fluid="true" Alt="@Name" Class="rounded-lg" />
+    <MudImage Src="@Name.GetImageURL(Mode, Left)" Fluid="true" Alt="@Name" Class="rounded-lg" onclick="@(() => OnImageClicked.InvokeAsync(Left))"/>
 }
 
 
@@ -8,4 +8,5 @@
     [Parameter] public string Name { get; set; }
     [Parameter] public bool Left { get; set; }
     [Parameter] public Mode Mode { get; set; }
+    [Parameter] public EventCallback<bool> OnImageClicked { get; set; }
 }

@@ -1,7 +1,5 @@
 ﻿using Fluxor;
-using HungryPig.Services;
 using HungryPig.Shared;
-using HungryPig.Store.GameUseCase;
 using HungryPig.Store.GameUseCase.Actions;
 using Microsoft.AspNetCore.Components;
 
@@ -19,7 +17,7 @@ namespace HungryPig.UI.Pages
         {
             var action = new InitGameAction(Mode, Name);
             Dispatcher.Dispatch(action);
-            NavigationManager.NavigateTo("tutorial");
+            NavigationManager.NavigateTo("/tutorial");
         }
     }
 }

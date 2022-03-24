@@ -10,8 +10,27 @@ namespace HungryPig.UI.Components
         [Parameter] public Level CurrentToturialLevel { get; set; }
         [Parameter] public bool Left { get; set; }
         [Parameter] public Mode Mode { get; set; }
+        [Parameter] public Action<bool, Side> SideSelected { get; set; }
 
         private string BorderColor { get; set; } = string.Empty;
 
+        private void OnImageClicked(bool left)
+        {
+            bool correct = (left && CurrentToturialLevel.Left > CurrentToturialLevel.Right) ||
+                           (!left && CurrentToturialLevel.Right > CurrentToturialLevel.Left);
+            
+            SideSelected?.Invoke(correct, left ? Side.Left : Side.Right);
+        }
+
+        public void SetBorderColor(bool correct) 
+        {
+            BorderColor = correct ? "mud-border-success" : "mud-border-secondary";
+            StateHasChanged();
+        }
+
+        public void ResetBorderColor()
+        {
+            BorderColor = string.Empty;
+        }
     }
 }

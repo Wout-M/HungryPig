@@ -8,7 +8,7 @@
         public int Right { get; set; }
 
 
-        public decimal ReactionTime { get; set; }
+        public long ReactionTime { get; set; }
         public Side SideSelected { get; set; }
         public bool Correct { get; set; }
     }

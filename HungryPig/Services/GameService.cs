@@ -33,8 +33,8 @@ namespace HungryPig.Services
                 TutorialLevel2 = new Level()
                 {
                     Name = "Oefenitem2",
-                    Left = 6,
-                    Right = 8
+                    Left = 8,
+                    Right = 6
                 },
                 Levels = Combinations
                 .OrderBy(combination => rnd.Next())

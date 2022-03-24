@@ -20,5 +20,6 @@ namespace HungryPig.Store.GameUseCase
             dispatcher.Dispatch(new InitGameResultAction(game));
             return Task.CompletedTask;
         }
+
     }
 }
