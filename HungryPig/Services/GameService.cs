@@ -19,6 +19,18 @@ namespace HungryPig.Services
         {
             var rnd = new Random();
 
+            var levels = Combinations
+                .OrderBy(combination => rnd.Next())
+                .Select(combination => new Level()
+                {
+                    Name = $"P{combination.Item1}-{combination.Item2}",
+                    Left = combination.Item1,
+                    Right = combination.Item2,
+                })
+                .ToList();
+
+            string text = string.Join(" | ", levels.Select(x => $"({x.Left},{x.Right})"));
+
             return new Game()
             {
                 Name = name,
@@ -36,15 +48,7 @@ namespace HungryPig.Services
                     Left = 8,
                     Right = 6
                 },
-                Levels = Combinations
-                .OrderBy(combination => rnd.Next())
-                .Select(combination => new Level()
-                {
-                    Name = $"P{combination.Item1}-{combination.Item2}",
-                    Left = combination.Item1,
-                    Right = combination.Item2,
-                })
-                .ToList()
+                Levels = levels
             };
         }
     }

@@ -10,18 +10,19 @@ namespace HungryPig.UI.Pages
 {
     partial class Tutorial
     {
+        [Inject] private NavigationManager NavigationManager { get; set; }
         [Inject] private IState<GameState> GameState { get; set; }
         [Inject] public IDispatcher Dispatcher { get; set; }
 
         private Level CurrentTutorialLevel { get; set; }
         private Mode Mode { get; set; }
-        private Stopwatch Stopwatch { get; set; } = new();
         private bool NextAllowed { get; set; }
+        private Stopwatch Stopwatch { get; set; } = new();
 
         private TutorialField TutorialFieldLeft { get; set; }
         private TutorialField TutorialFieldRight { get; set; }
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
             Mode = GameState.Value.Game.Mode;
             CurrentTutorialLevel = GameState.Value.Game.TutorialLevel1;
@@ -29,7 +30,7 @@ namespace HungryPig.UI.Pages
             Stopwatch.Start();
         }
 
-        protected void SideSelected(bool correct, Side side)
+        private void SideSelected(bool correct, Side side)
         {
             if (!NextAllowed)
             {
@@ -53,7 +54,7 @@ namespace HungryPig.UI.Pages
             }
         }
 
-        protected void NextClicked()
+        private void NextClicked()
         {
             NextAllowed = false;
             TutorialFieldLeft?.ResetBorderColor();
@@ -66,7 +67,7 @@ namespace HungryPig.UI.Pages
             }
             else
             {
-
+                NavigationManager.NavigateTo("/game");
             }
         }
     }

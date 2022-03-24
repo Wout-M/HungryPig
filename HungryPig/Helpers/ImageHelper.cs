@@ -7,6 +7,8 @@ namespace HungryPig.Helpers
     {
         public static string GetImageURL(this string name, Mode mode, bool left)
         {
+            if (string.IsNullOrEmpty(name)) return "images/empty.png";
+
             var url = new StringBuilder("images/");
 
             switch (mode)

@@ -20,6 +20,15 @@ namespace HungryPig.Store.GameUseCase
             return new GameState(game);
         }
 
-        
+        [ReducerMethod]
+        public static GameState UpdateLevelAction(GameState state, UpdateLevelAction action)
+        {
+            var game = state.Game;
+            
+            game.Levels[game.CurrentLevelId] = action.Level;
+            game.CurrentLevelId++;
+
+            return new GameState(game);
+        }
     }
 }

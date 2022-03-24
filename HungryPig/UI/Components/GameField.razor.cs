@@ -1,6 +1,33 @@
-﻿namespace HungryPig.UI.Components
+﻿using HungryPig.Helpers;
+using HungryPig.Shared;
+using Microsoft.AspNetCore.Components;
+
+namespace HungryPig.UI.Components
 {
-    partial class GameField
+    partial class GameField : ComponentBase
     {
+        [Parameter] public Level CurrentLevel { get; set; }
+        [Parameter] public bool Left { get; set; }
+        [Parameter] public Mode Mode { get; set; }
+        [Parameter] public Action<bool, Side> SideSelected { get; set; }
+
+        private string ImageName { get; set; }
+
+        protected override void OnInitialized()
+        {
+            SetImage();
+        }
+
+        private void OnImageClicked(bool left)
+        {
+            bool correct = (left && CurrentLevel.Left > CurrentLevel.Right) ||
+                          (!left && CurrentLevel.Right > CurrentLevel.Left);
+
+            SideSelected?.Invoke(correct, left ? Side.Left : Side.Right);
+        }
+
+        public void SetImage() => ImageName = CurrentLevel?.Name ?? string.Empty;
+
+        public void ResetImage() => ImageName = string.Empty;
     }
 }

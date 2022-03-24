@@ -1,7 +1,8 @@
-﻿@if (!string.IsNullOrEmpty(Name))
-{
-    <MudImage Src="@Name.GetImageURL(Mode, Left)" Fluid="true" Alt="@Name" Class="rounded-lg" onclick="@(() => OnImageClicked.InvokeAsync(Left))"/>
-}
+﻿<MudImage Src="@Name.GetImageURL(Mode, Left)" 
+          Fluid="true" 
+          Alt="@(string.IsNullOrEmpty(Name) ? "Empty" : Name)" 
+          Class="rounded-lg" 
+          onclick="@(() => OnImageClicked.InvokeAsync(Left))" />
 
 
 @code {
