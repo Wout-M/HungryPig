@@ -1,4 +1,6 @@
-﻿namespace HungryPig.Shared
+﻿using System.ComponentModel;
+
+namespace HungryPig.Shared
 {
     public class Level
     {
@@ -15,7 +17,9 @@
 
     public enum Side
     {
+        [Description("Links")]
         Left,
+        [Description("Rechts")]
         Right
     }
 }

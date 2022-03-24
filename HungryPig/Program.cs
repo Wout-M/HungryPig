@@ -1,3 +1,4 @@
+using BlazorDownloadFile;
 using Fluxor;
 using HungryPig.Services;
 using HungryPig.UI;
@@ -10,7 +11,9 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+builder.Services.AddBlazorDownloadFile();
 builder.Services.AddScoped<IGameService, GameService>();
+builder.Services.AddScoped<IExportService, ExportService>();
 builder.Services.AddMudServices();
 builder.Services.AddFluxor(opt => opt.ScanAssemblies(typeof(Program).Assembly));
 

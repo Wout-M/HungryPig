@@ -49,6 +49,7 @@ namespace HungryPig.UI.Pages
 
                 NextAllowed = true;
                 LevelSet = false;
+                Stopwatch.Reset();
                 CurrentLevel = GameState.Value.Game.Levels[GameState.Value.Game.CurrentLevelId];
                 StateHasChanged();
             }
