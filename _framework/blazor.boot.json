@@ -9,7 +9,7 @@
     "assembly": {
       "Fluxor.Blazor.Web.dll": "sha256-swg8IITdZ0ZLUY3ZngwHL4FJjkKT4lUHAUAv4vz4P2c=",
       "Fluxor.dll": "sha256-NZG\/zMrdegWqdbJDxKFOoIytz32IHwDDa6hPZgOi0so=",
-      "HungryPig.dll": "sha256-6EOPm9PSWvTzsOlQpgY3kskOUeHk8xnl2LnLf\/6kwl4=",
+      "HungryPig.dll": "sha256-fyfqNM1QV1uVG0x\/H070ii1lh1TYJk3H9IIAhZixciA=",
       "Microsoft.AspNetCore.Components.dll": "sha256-FNjv80EiXVpsL9EzVI+Z7jq7h+Vucaw8X4yd8nzIL4c=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-ILDWELV8EnbBMdxBm+PcqIQqyvWLetEAl7KGi+TVTDE=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-i4ohn3iVKSWaCqXtj7X6G1\/y+telggGqpR0KHx2PbPo=",
@@ -43,7 +43,7 @@
       "System.Net.Http.dll": "sha256-Yx\/xm52XqbYfaFgpIjN\/whXmFK7KVGGimFux6BrEV9U=",
       "System.Net.Primitives.dll": "sha256-eNDHXyaFRxkOq4TjKbBO7njAR+mjge3ouIywFmEd3C4=",
       "System.ObjectModel.dll": "sha256-fMDmw6iLXnafEo\/k11xne4OngETV\/2ervSfSs84pAYk=",
-      "System.Private.CoreLib.dll": "sha256-\/FBpm64M04oywWK+1\/ldEtLo2JxAGUNdhz1GDoKS6Eg=",
+      "System.Private.CoreLib.dll": "sha256-9edeXL2oIOL\/0Cb5uNbNUBNKKRImxwgmfVQtEiHx5as=",
       "System.Private.Runtime.InteropServices.JavaScript.dll": "sha256-wjh1Sci24Wz4+lhcTeyRDQN1dc\/px5pMIXxyv0DmGQo=",
       "System.Private.Uri.dll": "sha256-JrJYLJenczy0iLF65XqRfnNMvsR3xv8wsBSsOMdwYnE=",
       "System.Runtime.CompilerServices.Unsafe.dll": "sha256-KwdHFKy9LFj6xfXZg8Wyi8jq3DQFNrVYYQW2\/YnUW8E=",
