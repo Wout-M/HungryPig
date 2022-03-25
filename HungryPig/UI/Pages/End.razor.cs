@@ -8,6 +8,7 @@ namespace HungryPig.UI.Pages
 {
     partial class End
     {
+        [Inject] private NavigationManager NavigationManager { get; set; }
         [Inject] private IState<GameState> GameState { get; set; }
         [Inject] private IBlazorDownloadFileService DownloadFileService { get; set; }
         [Inject] private IExportService ExportService { get; set; }   
@@ -20,6 +21,11 @@ namespace HungryPig.UI.Pages
             await DownloadFileService.ClearBuffers();
             await DownloadFileService.AddBuffer(bytes);
             await DownloadFileService.DownloadFile($"Data {game.Name} {game.Date:g}.xlsx", bytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        }
+
+        private void RestartClicked()
+        {
+            NavigationManager.NavigateTo("");
         }
     }
 }

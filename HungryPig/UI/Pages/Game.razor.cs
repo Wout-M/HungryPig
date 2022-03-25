@@ -50,7 +50,8 @@ namespace HungryPig.UI.Pages
                 NextAllowed = true;
                 LevelSet = false;
                 Stopwatch.Reset();
-                CurrentLevel = GameState.Value.Game.Levels[GameState.Value.Game.CurrentLevelId];
+                if (GameState.Value.Game.CurrentLevelId < GameState.Value.Game.Levels.Count)
+                    CurrentLevel = GameState.Value.Game.Levels[GameState.Value.Game.CurrentLevelId];
                 StateHasChanged();
             }
         }
@@ -58,11 +59,11 @@ namespace HungryPig.UI.Pages
         private async Task NextClicked()
         {
             NextAllowed = false;
-            if (GameState.Value.Game.CurrentLevelId == (GameState.Value.Game.Levels.Count / 2 - 1))
+            if (GameState.Value.Game.CurrentLevelId == (GameState.Value.Game.Levels.Count / 2))
             {
                 NavigationManager.NavigateTo("pause");
             }
-            else if (GameState.Value.Game.CurrentLevelId == GameState.Value.Game.Levels.Count - 1)
+            else if (GameState.Value.Game.CurrentLevelId == GameState.Value.Game.Levels.Count)
             {
                 NavigationManager.NavigateTo("end");
             }

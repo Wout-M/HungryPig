@@ -6,7 +6,7 @@
 
 <MudLayout>
    <MudAppBar Elevation="0">
-        <MudButton Link="/" Color="Color.Inherit">Hungry Pig</MudButton>
+        <MudText Color="Color.Inherit" Typo="Typo.button">Hungry Pig</MudText>
         <MudSpacer />
         <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Link="https://github.com/Wout-M" Target="_blank" />
     </MudAppBar>
@@ -16,12 +16,3 @@
         </MudContainer>
     </MudMainContent>
 </MudLayout>
-
-@code {
-    bool _drawerOpen = false;
-
-    void DrawerToggle()
-    {
-        _drawerOpen = !_drawerOpen;
-    }
-}

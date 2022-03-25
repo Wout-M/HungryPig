@@ -24,7 +24,7 @@ namespace HungryPig.UI.Components
 
         public void SetBorderColor(bool correct) 
         {
-            BorderColor = correct ? "mud-border-success" : "mud-border-secondary";
+            BorderColor = correct ? "mud-border-tertiary" : "mud-border-secondary";
             StateHasChanged();
         }
 
