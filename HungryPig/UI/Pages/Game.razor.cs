@@ -18,6 +18,7 @@ namespace HungryPig.UI.Pages
         private Mode Mode { get; set; }
         private bool NextAllowed { get; set; }
         private bool LevelSet { get; set; }
+        private bool LevelFinished { get; set; }
         private Stopwatch Stopwatch { get; set; } = new();
 
         private GameField GameFieldLeft { get; set; }
@@ -46,10 +47,12 @@ namespace HungryPig.UI.Pages
                 CurrentLevel.ReactionTime = time;
 
                 Dispatcher.Dispatch(new UpdateLevelAction(CurrentLevel));
-
+                
                 NextAllowed = true;
                 LevelSet = false;
+               
                 Stopwatch.Reset();
+
                 if (GameState.Value.Game.CurrentLevelId < GameState.Value.Game.Levels.Count)
                     CurrentLevel = GameState.Value.Game.Levels[GameState.Value.Game.CurrentLevelId];
                 StateHasChanged();
@@ -59,6 +62,7 @@ namespace HungryPig.UI.Pages
         private async Task NextClicked()
         {
             NextAllowed = false;
+            LevelFinished = false;
             if (GameState.Value.Game.CurrentLevelId == (GameState.Value.Game.Levels.Count / 2))
             {
                 NavigationManager.NavigateTo("pause");
@@ -77,14 +81,14 @@ namespace HungryPig.UI.Pages
         {
             GameFieldLeft?.SetImage();
             GameFieldRight?.SetImage();
+            LevelSet = true;
+            Stopwatch.Start();
+            
             await Task.Delay(1000);
             GameFieldLeft?.ResetImage();
             GameFieldRight?.ResetImage();
+            LevelFinished = true;
             StateHasChanged();
-
-            Stopwatch.Start();
-            LevelSet = true;
-            
         }
     }
 }
