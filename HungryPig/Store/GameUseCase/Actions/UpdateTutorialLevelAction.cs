@@ -4,10 +4,10 @@ namespace HungryPig.Store.GameUseCase.Actions
 {
     public class UpdateTutorialLevelAction
     {
-        public Level TutorialLevel { get; }
+        public SymbLevel TutorialLevel { get; }
         public bool First { get; }
 
-        public UpdateTutorialLevelAction(Level tutorialLevel, bool first)
+        public UpdateTutorialLevelAction(SymbLevel tutorialLevel, bool first)
         {
             TutorialLevel = tutorialLevel;
             First = first;

@@ -7,9 +7,9 @@ namespace HungryPig.UI.Components._non_symbolic
 {
     partial class TutorialField : ComponentBase
     {
-        [Parameter] public Level CurrentToturialLevel { get; set; }
+        [Parameter] public SymbLevel CurrentToturialLevel { get; set; }
         [Parameter] public bool Left { get; set; }
-        [Parameter] public Mode Mode { get; set; }
+        [Parameter] public SymbMode Mode { get; set; }
         [Parameter] public Action<bool, Side> SideSelected { get; set; }
 
         private string BorderColor { get; set; } = string.Empty;

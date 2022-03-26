@@ -14,8 +14,8 @@ namespace HungryPig.UI.Pages._non_symbolic
         [Inject] private IState<GameState> GameState { get; set; }
         [Inject] public IDispatcher Dispatcher { get; set; }
 
-        private Level CurrentTutorialLevel { get; set; }
-        private Mode Mode { get; set; }
+        private SymbLevel CurrentTutorialLevel { get; set; }
+        private SymbMode Mode { get; set; }
         private bool NextAllowed { get; set; }
         private Stopwatch Stopwatch { get; set; } = new();
 
@@ -67,7 +67,7 @@ namespace HungryPig.UI.Pages._non_symbolic
             }
             else
             {
-                NavigationManager.NavigateTo("game");
+                NavigationManager.NavigateTo("symbgame/game");
             }
         }
     }

@@ -14,8 +14,8 @@ namespace HungryPig.UI.Pages._non_symbolic
         [Inject] private IState<GameState> GameState { get; set; }
         [Inject] public IDispatcher Dispatcher { get; set; }
 
-        private Level CurrentLevel { get; set; }
-        private Mode Mode { get; set; }
+        private SymbLevel CurrentLevel { get; set; }
+        private SymbMode Mode { get; set; }
         private bool NextAllowed { get; set; }
         private bool LevelSet { get; set; }
         private bool LevelFinished { get; set; }
@@ -65,11 +65,11 @@ namespace HungryPig.UI.Pages._non_symbolic
             LevelFinished = false;
             if (GameState.Value.Game.CurrentLevelId == (GameState.Value.Game.Levels.Count / 2))
             {
-                NavigationManager.NavigateTo("pause");
+                NavigationManager.NavigateTo("symbgame/pause");
             }
             else if (GameState.Value.Game.CurrentLevelId == GameState.Value.Game.Levels.Count)
             {
-                NavigationManager.NavigateTo("end");
+                NavigationManager.NavigateTo("symbgame/end");
             }
             else
             {

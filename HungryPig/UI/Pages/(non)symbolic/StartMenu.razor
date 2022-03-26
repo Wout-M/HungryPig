@@ -1,9 +1,9 @@
-﻿@page "/"
+﻿@page "/symbgame"
 
 <MudText Typo="Typo.h3">StartMenu</MudText>
 <MudTextField @bind-Value="Name" Label="Vul hier je naam in" Variant="Variant.Outlined"/>
 <MudSelect @bind-Value="Mode" Label="Selecteer de spelversie">
-    @foreach (Mode item in Enum.GetValues(typeof(Mode)))
+    @foreach (SymbMode item in Enum.GetValues(typeof(SymbMode)))
     {
         <MudSelectItem Value="@item">@item.Description()</MudSelectItem>
     }

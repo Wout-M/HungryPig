@@ -6,14 +6,14 @@ namespace HungryPig.Services
 {
     public interface IExportService
     {
-        byte[] ExportGameDataToExcel(Game game);
+        byte[] ExportGameDataToExcel(SymbGame game);
     }
 
     public class ExportService : IExportService
     {
         #region (non)symbolic
 
-        public byte[] ExportGameDataToExcel(Game game)
+        public byte[] ExportGameDataToExcel(SymbGame game)
         {
             var workbook = new XLWorkbook();
             workbook.Properties.Title = $"Data {game.Name} {game.Date:g}";
@@ -24,9 +24,9 @@ namespace HungryPig.Services
             return ConvertToByte(workbook);
         }
 
-        private void CreateWorksheetForGame(XLWorkbook workbook, Game game)
+        private void CreateWorksheetForGame(XLWorkbook workbook, SymbGame game)
         {
-            var pigMode = game.Mode == Mode.Pig;
+            var pigMode = game.Mode == SymbMode.Pig;
             var worksheet = workbook.AddWorksheet("data");
             var columns = new List<string>() { "Volgorde", "Antwoord", "Correct", "Reactie tijd" };
 
@@ -54,7 +54,7 @@ namespace HungryPig.Services
             }
         }
 
-        private void AddLevelData(IXLWorksheet worksheet, bool pigMode, Level level, int row)
+        private void AddLevelData(IXLWorksheet worksheet, bool pigMode, SymbLevel level, int row)
         {
             int column = 1;
             AddDataColumn(worksheet, level.Name, row, ref column);

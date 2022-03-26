@@ -10,14 +10,14 @@ namespace HungryPig.UI.Pages._non_symbolic
         [Inject] private NavigationManager NavigationManager { get; set; }
         [Inject] public IDispatcher Dispatcher { get; set; }
 
-        protected Mode Mode { get; set; } = Mode.Pig;
+        protected SymbMode Mode { get; set; } = SymbMode.Pig;
         protected string Name { get; set; } = string.Empty;
 
         private void StartButtonClicked()
         {
             var action = new InitGameAction(Mode, Name);
             Dispatcher.Dispatch(action);
-            NavigationManager.NavigateTo("tutorial");
+            NavigationManager.NavigateTo("symbgame/tutorial");
         }
     }
 }

@@ -4,9 +4,9 @@ namespace HungryPig.Store.GameUseCase.Actions
 {
     public class UpdateLevelAction
     {
-        public Level Level { get; }
+        public SymbLevel Level { get; }
 
-        public UpdateLevelAction(Level level)
+        public UpdateLevelAction(SymbLevel level)
         {
             Level = level;
         }

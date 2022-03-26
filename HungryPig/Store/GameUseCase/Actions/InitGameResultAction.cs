@@ -4,9 +4,9 @@ namespace HungryPig.Store.GameUseCase.Actions
 {
     public class InitGameResultAction
     {
-        public Game Game { get; }
+        public SymbGame Game { get; }
 
-        public InitGameResultAction(Game game)
+        public InitGameResultAction(SymbGame game)
         {
             Game = game;
         }

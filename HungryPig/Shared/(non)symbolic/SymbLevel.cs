@@ -2,13 +2,12 @@
 
 namespace HungryPig.Shared
 {
-    public class Level
+    public class SymbLevel
     {
         public string Name { get; set; }
         public bool Subetizing { get => Left > 3 || Right > 3; }
         public int Left { get; set; }
         public int Right { get; set; }
-
 
         public long ReactionTime { get; set; }
         public Side SideSelected { get; set; }

@@ -4,7 +4,7 @@ namespace HungryPig.Services
 {
     public interface IGameService
     {
-        Game InitGame(Mode mode, string name);
+        SymbGame InitGame(SymbMode mode, string name);
     }
 
     public class GameService : IGameService
@@ -17,22 +17,22 @@ namespace HungryPig.Services
             (5,7), (5,9), (6,2), (6,4), (6,5), (6,8), (7,3), (7,5), (7,8), (7,9), (8,4), (8,6), (8,7), (8,9), (9,5), (9,7), (9,8)
         };
 
-        public Game InitGame(Mode mode, string name)
+        public SymbGame InitGame(SymbMode mode, string name)
         {
             var rnd = new Random();
 
-            return new Game()
+            return new SymbGame()
             {
                 Name = name,
                 Mode = mode,
                 Date = DateTime.Now,
-                TutorialLevel1 = new Level()
+                TutorialLevel1 = new SymbLevel()
                 {
                     Name = "Oefenitem1",
                     Left = 1,
                     Right = 2,
                 },
-                TutorialLevel2 = new Level()
+                TutorialLevel2 = new SymbLevel()
                 {
                     Name = "Oefenitem2",
                     Left = 8,
@@ -40,7 +40,7 @@ namespace HungryPig.Services
                 },
                 Levels = Combinations
                 .OrderBy(combination => rnd.Next())
-                .Select(combination => new Level()
+                .Select(combination => new SymbLevel()
                 {
                     Name = $"P{combination.Item1}-{combination.Item2}",
                     Left = combination.Item1,

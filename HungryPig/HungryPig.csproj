@@ -16,7 +16,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Shared\dotenum\" />
 	  <Folder Include="UI\Components\dotenum\" />
 	  <Folder Include="UI\Pages\dotenum\" />
 	</ItemGroup>

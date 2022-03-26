@@ -6,11 +6,11 @@ namespace HungryPig.Store.GameUseCase
     [FeatureState]
     public class GameState
     {
-        public Game Game { get; }
+        public SymbGame Game { get; }
 
         private GameState() { }
 
-        public GameState(Game game)
+        public GameState(SymbGame game)
         {
             Game = game;
         }
