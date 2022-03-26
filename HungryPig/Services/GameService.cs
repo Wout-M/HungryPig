@@ -68,6 +68,7 @@ namespace HungryPig.Services
                 {
                     Name = "Oefenitem-8",
                     Amount = 8,
+                    Color = DotColor.Black
                 },
                 Levels = Amounts.Select(amount =>
                 {
@@ -76,6 +77,7 @@ namespace HungryPig.Services
                     {
                         Name = $"P{i}-{amount}",
                         Amount = amount,
+                        Color = (DotColor)(i % Enum.GetValues(typeof(DotColor)).Length)
                     };
                 }).ToList()
             };

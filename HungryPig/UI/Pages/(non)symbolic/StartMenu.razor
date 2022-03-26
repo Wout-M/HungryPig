@@ -5,7 +5,7 @@
 <MudSelect @bind-Value="Mode" Label="Selecteer de spelversie">
     @foreach (SymbMode item in Enum.GetValues(typeof(SymbMode)))
     {
-        <MudSelectItem Value="@item">@item.Description()</MudSelectItem>
+        <MudSelectItem Value="@item">@item.GetDescription()</MudSelectItem>
     }
 </MudSelect>
 <MudButton OnClick="StartButtonClicked" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large">
