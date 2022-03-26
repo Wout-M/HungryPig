@@ -11,6 +11,8 @@ namespace HungryPig.Services
 
     public class ExportService : IExportService
     {
+        #region (non)symbolic
+
         public byte[] ExportGameDataToExcel(Game game)
         {
             var workbook = new XLWorkbook();
@@ -62,6 +64,8 @@ namespace HungryPig.Services
             AddDataColumn(worksheet, level.Correct, row, ref column);
             AddDataColumn(worksheet, level.ReactionTime, row, ref column);
         }
+
+        #endregion
 
         private void AddDataColumn(IXLWorksheet worksheet, object data, int row, ref int column)
         {

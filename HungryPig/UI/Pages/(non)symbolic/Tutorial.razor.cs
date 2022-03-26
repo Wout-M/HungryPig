@@ -2,11 +2,11 @@
 using HungryPig.Shared;
 using HungryPig.Store.GameUseCase;
 using HungryPig.Store.GameUseCase.Actions;
-using HungryPig.UI.Components;
+using HungryPig.UI.Components._non_symbolic;
 using Microsoft.AspNetCore.Components;
 using System.Diagnostics;
 
-namespace HungryPig.UI.Pages
+namespace HungryPig.UI.Pages._non_symbolic
 {
     partial class Tutorial
     {

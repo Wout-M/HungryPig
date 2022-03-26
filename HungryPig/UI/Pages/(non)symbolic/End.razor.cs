@@ -4,7 +4,7 @@ using HungryPig.Services;
 using HungryPig.Store.GameUseCase;
 using Microsoft.AspNetCore.Components;
 
-namespace HungryPig.UI.Pages
+namespace HungryPig.UI.Pages._non_symbolic
 {
     partial class End
     {

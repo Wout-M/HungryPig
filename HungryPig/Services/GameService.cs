@@ -9,6 +9,8 @@ namespace HungryPig.Services
 
     public class GameService : IGameService
     {
+        #region (non)symbolic
+
         private static readonly List<(int, int)> Combinations = new()
         {
             (1,5), (2,3), (2,4), (2,6), (3,2), (3,4), (3,5), (3,7), (4,2), (4,3), (4,5), (4,6), (4,8), (5,1), (5,3), (5,4), (5,6),
@@ -43,9 +45,10 @@ namespace HungryPig.Services
                     Name = $"P{combination.Item1}-{combination.Item2}",
                     Left = combination.Item1,
                     Right = combination.Item2,
-                })
-                .ToList()
-        };
+                }).ToList()
+            };
         }
+
+        #endregion
     }
 }

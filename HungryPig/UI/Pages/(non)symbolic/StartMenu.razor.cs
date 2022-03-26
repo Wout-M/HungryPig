@@ -3,7 +3,7 @@ using HungryPig.Shared;
 using HungryPig.Store.GameUseCase.Actions;
 using Microsoft.AspNetCore.Components;
 
-namespace HungryPig.UI.Pages
+namespace HungryPig.UI.Pages._non_symbolic
 {
     partial class StartMenu 
     {

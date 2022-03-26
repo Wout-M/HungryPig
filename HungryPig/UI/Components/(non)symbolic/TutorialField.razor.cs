@@ -3,7 +3,7 @@ using HungryPig.Shared;
 using HungryPig.Store.GameUseCase;
 using Microsoft.AspNetCore.Components;
 
-namespace HungryPig.UI.Components
+namespace HungryPig.UI.Components._non_symbolic
 {
     partial class TutorialField : ComponentBase
     {
