@@ -1,7 +1,7 @@
 ﻿using BlazorDownloadFile;
 using Fluxor;
 using HungryPig.Services;
-using HungryPig.Store.GameUseCase;
+using HungryPig.Store.SymbGameUseCase;
 using Microsoft.AspNetCore.Components;
 
 namespace HungryPig.UI.Pages._non_symbolic
@@ -9,7 +9,7 @@ namespace HungryPig.UI.Pages._non_symbolic
     partial class End
     {
         [Inject] private NavigationManager NavigationManager { get; set; }
-        [Inject] private IState<GameState> GameState { get; set; }
+        [Inject] private IState<SymbGameState> GameState { get; set; }
         [Inject] private IBlazorDownloadFileService DownloadFileService { get; set; }
         [Inject] private IExportService ExportService { get; set; }   
 

@@ -4,6 +4,7 @@ namespace HungryPig.Services
 {
     public interface IGameService
     {
+        DotGame InitDotGame(string name);
         SymbGame InitGame(SymbMode mode, string name);
     }
 
@@ -45,6 +46,37 @@ namespace HungryPig.Services
                     Name = $"P{combination.Item1}-{combination.Item2}",
                     Left = combination.Item1,
                     Right = combination.Item2,
+                }).ToList()
+            };
+        }
+
+        #endregion
+
+        #region dotgame
+
+        private static readonly List<int> Amounts = new() { 3, 9, 5, 4, 1, 8, 2, 7, 3, 6 };
+
+        public DotGame InitDotGame(string name)
+        {
+            int i = 0;
+
+            return new DotGame()
+            {
+                Name = name,
+                Date = DateTime.Now,
+                TutorialLevel = new DotLevel()
+                {
+                    Name = "Oefenitem-8",
+                    Amount = 8,
+                },
+                Levels = Amounts.Select(amount =>
+                {
+                    i++;
+                    return new DotLevel()
+                    {
+                        Name = $"P{i}-{amount}",
+                        Amount = amount,
+                    };
                 }).ToList()
             };
         }

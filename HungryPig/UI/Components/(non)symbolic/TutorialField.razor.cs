@@ -1,6 +1,4 @@
-﻿using Fluxor;
-using HungryPig.Shared;
-using HungryPig.Store.GameUseCase;
+﻿using HungryPig.Shared;
 using Microsoft.AspNetCore.Components;
 
 namespace HungryPig.UI.Components._non_symbolic

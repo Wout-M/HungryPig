@@ -1,7 +1,7 @@
 ﻿using Fluxor;
 using HungryPig.Shared;
-using HungryPig.Store.GameUseCase;
-using HungryPig.Store.GameUseCase.Actions;
+using HungryPig.Store.SymbGameUseCase;
+using HungryPig.Store.SymbGameUseCase.Actions;
 using HungryPig.UI.Components._non_symbolic;
 using Microsoft.AspNetCore.Components;
 using System.Diagnostics;
@@ -11,7 +11,7 @@ namespace HungryPig.UI.Pages._non_symbolic
     partial class Game
     {
         [Inject] private NavigationManager NavigationManager { get; set; }
-        [Inject] private IState<GameState> GameState { get; set; }
+        [Inject] private IState<SymbGameState> GameState { get; set; }
         [Inject] public IDispatcher Dispatcher { get; set; }
 
         private SymbLevel CurrentLevel { get; set; }
@@ -46,7 +46,7 @@ namespace HungryPig.UI.Pages._non_symbolic
                 CurrentLevel.Correct = correct;
                 CurrentLevel.ReactionTime = time;
 
-                Dispatcher.Dispatch(new UpdateLevelAction(CurrentLevel));
+                Dispatcher.Dispatch(new UpdateSymbLevelAction(CurrentLevel));
                 
                 NextAllowed = true;
                 LevelSet = false;

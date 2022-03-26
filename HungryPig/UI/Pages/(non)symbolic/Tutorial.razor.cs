@@ -1,7 +1,7 @@
 ﻿using Fluxor;
 using HungryPig.Shared;
-using HungryPig.Store.GameUseCase;
-using HungryPig.Store.GameUseCase.Actions;
+using HungryPig.Store.SymbGameUseCase;
+using HungryPig.Store.SymbGameUseCase.Actions;
 using HungryPig.UI.Components._non_symbolic;
 using Microsoft.AspNetCore.Components;
 using System.Diagnostics;
@@ -11,7 +11,7 @@ namespace HungryPig.UI.Pages._non_symbolic
     partial class Tutorial
     {
         [Inject] private NavigationManager NavigationManager { get; set; }
-        [Inject] private IState<GameState> GameState { get; set; }
+        [Inject] private IState<SymbGameState> GameState { get; set; }
         [Inject] public IDispatcher Dispatcher { get; set; }
 
         private SymbLevel CurrentTutorialLevel { get; set; }
@@ -47,7 +47,7 @@ namespace HungryPig.UI.Pages._non_symbolic
                 TutorialFieldLeft?.SetBorderColor(leftCorrect);
                 TutorialFieldRight?.SetBorderColor(!leftCorrect);
 
-                Dispatcher.Dispatch(new UpdateTutorialLevelAction(CurrentTutorialLevel, CurrentTutorialLevel.Name == "Oefenitem1"));
+                Dispatcher.Dispatch(new UpdateSymbTutorialLevelAction(CurrentTutorialLevel, CurrentTutorialLevel.Name == "Oefenitem1"));
 
                 NextAllowed = true;
                 StateHasChanged();

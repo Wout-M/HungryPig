@@ -1,16 +1,16 @@
 ﻿using Fluxor;
 using HungryPig.Shared;
 
-namespace HungryPig.Store.GameUseCase
+namespace HungryPig.Store.SymbGameUseCase
 {
     [FeatureState]
-    public class GameState
+    public class SymbGameState
     {
         public SymbGame Game { get; }
 
-        private GameState() { }
+        private SymbGameState() { }
 
-        public GameState(SymbGame game)
+        public SymbGameState(SymbGame game)
         {
             Game = game;
         }

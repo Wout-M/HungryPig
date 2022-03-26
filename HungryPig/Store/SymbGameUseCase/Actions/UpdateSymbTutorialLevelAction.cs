@@ -1,13 +1,13 @@
 ﻿using HungryPig.Shared;
 
-namespace HungryPig.Store.GameUseCase.Actions
+namespace HungryPig.Store.SymbGameUseCase.Actions
 {
-    public class UpdateTutorialLevelAction
+    public class UpdateSymbTutorialLevelAction
     {
         public SymbLevel TutorialLevel { get; }
         public bool First { get; }
 
-        public UpdateTutorialLevelAction(SymbLevel tutorialLevel, bool first)
+        public UpdateSymbTutorialLevelAction(SymbLevel tutorialLevel, bool first)
         {
             TutorialLevel = tutorialLevel;
             First = first;

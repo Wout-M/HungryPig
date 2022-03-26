@@ -1,6 +1,6 @@
 ﻿using Fluxor;
 using HungryPig.Shared;
-using HungryPig.Store.GameUseCase.Actions;
+using HungryPig.Store.SymbGameUseCase.Actions;
 using Microsoft.AspNetCore.Components;
 
 namespace HungryPig.UI.Pages._non_symbolic
@@ -15,7 +15,7 @@ namespace HungryPig.UI.Pages._non_symbolic
 
         private void StartButtonClicked()
         {
-            var action = new InitGameAction(Mode, Name);
+            var action = new InitSymbGameAction(Mode, Name);
             Dispatcher.Dispatch(action);
             NavigationManager.NavigateTo("symbgame/tutorial");
         }
