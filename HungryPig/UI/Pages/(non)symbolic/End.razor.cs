@@ -16,7 +16,7 @@ namespace HungryPig.UI.Pages._non_symbolic
         private async Task DownloadClicked()
         {
             var game = GameState.Value.Game;
-            var bytes = ExportService.ExportGameDataToExcel(game);
+            var bytes = ExportService.ExportSymbGameDataToExcel(game);
 
             await DownloadFileService.ClearBuffers();
             await DownloadFileService.AddBuffer(bytes);

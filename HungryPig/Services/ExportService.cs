@@ -6,25 +6,26 @@ namespace HungryPig.Services
 {
     public interface IExportService
     {
-        byte[] ExportGameDataToExcel(SymbGame game);
+        byte[] ExportDotGameDataToExcel(DotGame game);
+        byte[] ExportSymbGameDataToExcel(SymbGame game);
     }
 
     public class ExportService : IExportService
     {
         #region (non)symbolic
 
-        public byte[] ExportGameDataToExcel(SymbGame game)
+        public byte[] ExportSymbGameDataToExcel(SymbGame game)
         {
             var workbook = new XLWorkbook();
             workbook.Properties.Title = $"Data {game.Name} {game.Date:g}";
             workbook.Properties.Subject = $"Data {game.Name} {game.Date:g}";
 
-            CreateWorksheetForGame(workbook, game);
+            CreateWorksheetForSymbGame(workbook, game);
 
             return ConvertToByte(workbook);
         }
 
-        private void CreateWorksheetForGame(XLWorkbook workbook, SymbGame game)
+        private void CreateWorksheetForSymbGame(XLWorkbook workbook, SymbGame game)
         {
             var pigMode = game.Mode == SymbMode.Pig;
             var worksheet = workbook.AddWorksheet("data");
@@ -46,15 +47,15 @@ namespace HungryPig.Services
             worksheet.Cell(2, columns.Count + 3).Value = game.Date;
 
             //Data
-            AddLevelData(worksheet, pigMode, game.TutorialLevel1, 2);
-            AddLevelData(worksheet, pigMode, game.TutorialLevel2, 3);
+            AddSymbLevelData(worksheet, pigMode, game.TutorialLevel1, 2);
+            AddSymbLevelData(worksheet, pigMode, game.TutorialLevel2, 3);
             for (int i = 0; i < game.Levels.Count; i++)
             {
-                AddLevelData(worksheet, pigMode, game.Levels[i], i + 4);
+                AddSymbLevelData(worksheet, pigMode, game.Levels[i], i + 4);
             }
         }
 
-        private void AddLevelData(IXLWorksheet worksheet, bool pigMode, SymbLevel level, int row)
+        private void AddSymbLevelData(IXLWorksheet worksheet, bool pigMode, SymbLevel level, int row)
         {
             int column = 1;
             AddDataColumn(worksheet, level.Name, row, ref column);
@@ -62,6 +63,54 @@ namespace HungryPig.Services
                 AddDataColumn(worksheet, level.Subetizing, row, ref column);
             AddDataColumn(worksheet, level.SideSelected.GetDescription(), row, ref column);
             AddDataColumn(worksheet, level.Correct, row, ref column);
+            AddDataColumn(worksheet, level.ReactionTime, row, ref column);
+        }
+
+        #endregion
+
+        #region dotenum
+
+        public byte[] ExportDotGameDataToExcel(DotGame game)
+        {
+            var workbook = new XLWorkbook();
+            workbook.Properties.Title = $"Data {game.Name} {game.Date:g}";
+            workbook.Properties.Subject = $"Data {game.Name} {game.Date:g}";
+
+            CreateWorksheetForDotGame(workbook, game);
+
+            return ConvertToByte(workbook);
+        }
+
+        private void CreateWorksheetForDotGame(XLWorkbook workbook, DotGame game)
+        {
+            var worksheet = workbook.AddWorksheet("data");
+            var columns = new List<string>() { "Volgorde", "Subetized", "Reactie tijd" };
+
+            //Columns
+            for (int i = 0; i < columns.Count; i++)
+            {
+                worksheet.Cell(1, i + 1).Value = columns[i];
+            }
+
+            //Extra info
+            worksheet.Cell(1, columns.Count + 2).Value = "Naam";
+            worksheet.Cell(2, columns.Count + 2).Value = game.Name;
+            worksheet.Cell(1, columns.Count + 3).Value = "Datum";
+            worksheet.Cell(2, columns.Count + 3).Value = game.Date;
+
+            //Data
+            AddDotLevelData(worksheet, game.TutorialLevel, 2);
+            for (int i = 0; i < game.Levels.Count; i++)
+            {
+                AddDotLevelData(worksheet, game.Levels[i], i + 3);
+            }
+        }
+
+        private void AddDotLevelData(IXLWorksheet worksheet, DotLevel level, int row)
+        {
+            int column = 1;
+            AddDataColumn(worksheet, level.Name, row, ref column);
+            AddDataColumn(worksheet, level.Subetizing, row, ref column);
             AddDataColumn(worksheet, level.ReactionTime, row, ref column);
         }
 
