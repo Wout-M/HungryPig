@@ -15,8 +15,7 @@ namespace HungryPig.UI.Pages._non_symbolic
 
         private void StartButtonClicked()
         {
-            var action = new InitSymbGameAction(Mode, Name);
-            Dispatcher.Dispatch(action);
+            Dispatcher.Dispatch(new InitSymbGameAction(Mode, Name));
             NavigationManager.NavigateTo("symbgame/tutorial");
         }
     }

@@ -5,7 +5,7 @@ namespace HungryPig.Helpers
 {
     public static class ImageHelper
     {
-        public static string GetImageURL(this string name, SymbMode mode, bool left)
+        public static string GetSymbImageURL(this string name, SymbMode mode, bool left)
         {
             if (string.IsNullOrEmpty(name)) return "images/empty.png";
 
@@ -25,5 +25,7 @@ namespace HungryPig.Helpers
             url.Append(left ? "-A.png" : "-B.png");
             return url.ToString();
         }
+
+        public static string GetDotImageURL(this string name) => string.IsNullOrEmpty(name) ? "images/empty.png" : $"images/dot/{name}.png";
     }
 }

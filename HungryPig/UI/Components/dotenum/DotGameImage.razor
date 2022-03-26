@@ -1,0 +1,11 @@
+﻿<MudImage Src="@Name.GetDotImageURL()" 
+          Fluid="true" 
+          Alt="@(string.IsNullOrEmpty(Name) ? "Empty" : Name)" 
+          Class="rounded-lg" 
+          onclick="@(() => OnImageClicked.InvokeAsync())" />
+
+
+@code {
+    [Parameter] public string Name { get; set; }
+    [Parameter] public EventCallback OnImageClicked { get; set; }
+}

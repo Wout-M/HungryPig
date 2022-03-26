@@ -1,4 +1,5 @@
 ﻿using Fluxor;
+using HungryPig.Store.DotGameUseCase.Actions;
 using Microsoft.AspNetCore.Components;
 
 namespace HungryPig.UI.Pages.dotenum
@@ -13,8 +14,7 @@ namespace HungryPig.UI.Pages.dotenum
 
         private void StartButtonClicked()
         {
-            //var action = new InitGameAction(Mode, Name);
-            //Dispatcher.Dispatch(action);
+            Dispatcher.Dispatch(new InitDotGameAction(Name));
             NavigationManager.NavigateTo("dotgame/tutorial");
         }
     }
