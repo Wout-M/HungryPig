@@ -6,11 +6,12 @@
         @if (CurrentTutorialLevel != null)
         {
             <DotGameField CurrentLevel="CurrentTutorialLevel"
-                          SideSelected="@SideSelected" />
+                          SideSelected="@SideSelected" 
+                          @ref="TutorialField"/>
         }
     </div>
     <div class="d-flex flex-row flex-grow-1 gap-4 justify-center">
-        @if (@NextAllowed)
+        @if (NextAllowed)
         {
             <MudButton OnClick="@NextClicked" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large">
                 Volgende
