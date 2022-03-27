@@ -5,7 +5,7 @@ namespace HungryPig.Helpers
 {
     public static class ImageHelper
     {
-        public static string GetSymbImageURL(this string name, SymbMode mode, bool left)
+        public static string GetSymbImageURL(this string name, SymbMode mode, int amount, bool left)
         {
             if (string.IsNullOrEmpty(name)) return "images/empty.png";
 
@@ -15,14 +15,18 @@ namespace HungryPig.Helpers
             {
                 case SymbMode.Pig:
                     url.Append("pig/");
+                    url.Append(name);
+                    url.Append(left ? "-A.png" : "-B.png");
                     break;
                 case SymbMode.Numbers:
                     url.Append("numbers/");
+                    url.Append(amount);
+                    url.Append(".png");
                     break;
             }
 
-            url.Append(name);
-            url.Append(left ? "-A.png" : "-B.png");
+
+            
             return url.ToString();
         }
 

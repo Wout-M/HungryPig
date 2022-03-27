@@ -1,0 +1,61 @@
+﻿@page "/symbgame/explanation"
+
+@if (ShowStep2)
+{
+    <MudGrid style="height:30%">
+        <MudItem sm="9">
+            <div class="d-flex flex-column align-center justify-center mud-height-full">
+                <MudCard Outlined="true">
+                    <MudCardContent>
+                        <MudText Typo="Typo.body1" Align="Align.Center">@Description</MudText>
+                    </MudCardContent>
+                </MudCard>
+                <MudButton Link="symbgame/tutorial" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large" Class="mx-auto my-3">
+                    Start
+                </MudButton>
+            </div>
+        </MudItem>
+        <MudItem sm="@SizeImage">
+            <div class="d-flex align-center justify-center">
+                <MudImage Src="@ImageURL" ObjectFit="ObjectFit.Contain" Height="200"/>
+            </div>
+        </MudItem>
+    </MudGrid>
+}
+else 
+{
+    <MudGrid>
+        <MudItem sm="8">
+            <MudGrid Justify="Justify.Center">
+                @foreach(var i in Enumerable.Range(1,9))
+                {
+                    <MudItem xs="4">
+                        <div class="d-flex flex-column align-center justify-center">
+                            <MudPaper Class="border-solid border-4 pa-4 " >
+                                <MudImage Src="@($"images/numbers/{i}.png")" Fluid="true" Style="max-height:150px"/>
+                            </MudPaper>
+                        </div>
+                    </MudItem>
+                }
+            </MudGrid>
+        </MudItem>
+        <MudItem sm="4">
+            <div class="d-flex flex-column align-center justify-center mud-height-full">
+                <div style="width:50%;" >
+                    <MudImage Src="@ImageURL" Fluid="true"/>
+                </div>
+                <div style="width:80%;" >
+                     <MudCard Outlined="true">
+                        <MudCardContent>
+                            <MudText Typo="Typo.body1" Align="Align.Center">@DescriptionStep1</MudText>
+                        </MudCardContent>
+                    </MudCard>
+                </div>
+                <MudButton OnClick="@(() => ShowStep2 = true)" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large" Class="mx-auto my-3">
+                    Volgende
+                </MudButton>
+            </div>
+             
+        </MudItem>
+    </MudGrid>
+}

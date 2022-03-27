@@ -1,13 +1,35 @@
 ﻿@page "/symbgame"
 
-<MudText Typo="Typo.h3">StartMenu</MudText>
-<MudTextField @bind-Value="Name" Label="Vul hier je naam in" Variant="Variant.Outlined"/>
-<MudSelect @bind-Value="Mode" Label="Selecteer de spelversie">
-    @foreach (SymbMode item in Enum.GetValues(typeof(SymbMode)))
-    {
-        <MudSelectItem Value="@item">@item.GetDescription()</MudSelectItem>
-    }
-</MudSelect>
-<MudButton OnClick="StartButtonClicked" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large">
-    Start
-</MudButton>
+<MudGrid Justify="Justify.Center">
+    <MudItem sm="6">
+        <MudCard Outlined="true" Class="border-solid border-2 mud-border-dark pa-3">
+            <MudCardContent>
+                <MudText Typo="Typo.h4" Align="Align.Center" Class="mb-4">@Title</MudText>
+                <MudTextField @bind-Value="Name" Label="Vul hier je naam in" Variant="Variant.Outlined" Class="my-3"/>
+                <MudSelect @bind-Value="Mode" Label="Selecteer de spelversie">
+                    @foreach (SymbMode item in Enum.GetValues(typeof(SymbMode)))
+                    {
+                        <MudSelectItem Value="@item">@item.GetDescription()</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton OnClick="StartButtonClicked" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large" Class="mx-auto">
+                    Start
+                </MudButton>
+            </MudCardActions>
+        </MudCard>
+    </MudItem>
+    <MudItem sm="4">
+        <div style="width:50%;" class="mx-auto">
+            <MudImage Src="@ImageURL" Fluid="true"/>
+        </div>
+        <div style="width:80%;" class="mx-auto">
+             <MudCard Outlined="true">
+                <MudCardContent>
+                    <MudText Typo="Typo.body1" Align="Align.Center">@Description</MudText>
+                </MudCardContent>
+            </MudCard>
+        </div>
+    </MudItem>
+</MudGrid>

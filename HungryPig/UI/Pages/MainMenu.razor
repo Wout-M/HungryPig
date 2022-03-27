@@ -1,16 +1,34 @@
 ﻿@page "/"
 
-<h3>MainMenu</h3>
-
-<MudButton Link="dotgame" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large">
-    Dot Enumeration
-</MudButton>
-
-<MudButton Link="symbgame" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large">
-    (Non) Symbolic Comparison
-</MudButton>
-
-
-@code {
-
-}
+<MudGrid>
+    <MudItem xs="12" sm="6">
+        <div class="d-flex flex-grow-1 justify-center align-content-center">
+            <MudCard Outlined="true" Class="border-solid border-2 mud-border-dark pa-3">
+                <MudCardContent>
+                    <MudText Typo="Typo.h4" Align="Align.Center" Class="mb-3">Dot Enumeration</MudText>
+                    <MudText Typo="Typo.body1" Align="Align.Center">Kan jij de juiste hoeveelheid raden?</MudText>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Link="dotgame" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" Class="mx-auto">
+                        Dot Enumeration
+                    </MudButton>
+                </MudCardActions>
+            </MudCard>
+        </div>
+    </MudItem>
+    <MudItem xs="12" sm="6">
+        <div class="d-flex flex-grow-1 justify-center align-content-center">
+            <MudCard Outlined="true" Class="border-solid border-2 mud-border-dark pa-3">
+                <MudCardContent>
+                    <MudText Typo="Typo.h4" Align="Align.Center" Class="mb-3">Cijferworm & Hongerig varkentje</MudText>
+                    <MudText Typo="Typo.body1" Align="Align.Center">Help jij hen de juiste hoeveelheid vinden?</MudText>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Link="symbgame" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" Class="mx-auto">
+                        (Non) Symbolic Comparison
+                    </MudButton>
+                </MudCardActions>
+            </MudCard>
+        </div>
+    </MudItem>
+</MudGrid>

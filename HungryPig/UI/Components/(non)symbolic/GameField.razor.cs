@@ -12,6 +12,7 @@ namespace HungryPig.UI.Components._non_symbolic
         [Parameter] public Action<bool, Side> SideSelected { get; set; }
 
         private string ImageName { get; set; }
+        private int Amount { get; set; }
 
         protected override void OnInitialized()
         {
@@ -26,8 +27,16 @@ namespace HungryPig.UI.Components._non_symbolic
             SideSelected?.Invoke(correct, left ? Side.Left : Side.Right);
         }
 
-        public void SetImage() => ImageName = CurrentLevel?.Name ?? string.Empty;
+        public void SetImage() 
+        {
+            ImageName = CurrentLevel?.Name ?? string.Empty;
+            Amount = (Left ? CurrentLevel?.Left : CurrentLevel?.Right) ?? 0;
+        } 
 
-        public void ResetImage() => ImageName = string.Empty;
+        public void ResetImage()
+        {
+            ImageName = string.Empty;
+            Amount = 0;
+        }
     }
 }
