@@ -1,4 +1,4 @@
-﻿ <MudGrid>
+﻿ <MudGrid Justify="Justify.FlexEnd">
     <MudItem sm="9">
         <div class="d-flex flex-column align-center justify-center mud-height-full">
             <MudCard Outlined="true">
@@ -7,7 +7,7 @@
                 </MudCardContent>
             </MudCard>
             <MudButton Link="@ButtonLink" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large" Class="mx-auto my-3">
-                Start
+                @ButtonText
             </MudButton>
         </div>
     </MudItem>
@@ -19,10 +19,12 @@
 </MudGrid>
 
 @code{
+
+    [Parameter] public string ButtonText { get; set; } = "Start";
     [Parameter] public string ButtonLink { get; set; }
     [Parameter] public string Description { get; set; }
     [Parameter] public SymbMode Mode { get; set; }
 
     private int SizeImage { get => Mode == SymbMode.Pig ? 2 : 3; }
-    private string ImageURL { get => Mode == SymbMode.Pig ? "images/pig-hungry.png" : "images/worm2.jpg"; }
+    private string ImageURL { get => Mode == SymbMode.Pig ? "images/pig-happy.png" : "images/worm2.jpg"; }
 }

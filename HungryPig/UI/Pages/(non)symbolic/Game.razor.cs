@@ -69,7 +69,7 @@ namespace HungryPig.UI.Pages._non_symbolic
             }
             else if (GameState.Value.Game.CurrentLevelId == GameState.Value.Game.Levels.Count)
             {
-                NavigationManager.NavigateTo("symbgame/end");
+                NavigationManager.NavigateTo("symbgame/postgame");
             }
             else
             {
