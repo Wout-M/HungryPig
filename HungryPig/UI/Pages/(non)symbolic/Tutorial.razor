@@ -1,31 +1,50 @@
 ﻿@page "/symbgame/tutorial"
 
-<div class="d-flex flex-column flex-grow-1 gap-4">
-    <div class="d-flex flex-row flex-grow-1 gap-4">
-        @if (CurrentTutorialLevel != null)
-        {
-             <div class="d-inline-flex pa-4 flex-grow-1 justify-center">
-                <TutorialField CurrentToturialLevel="@CurrentTutorialLevel" 
-                               Mode="@Mode" 
-                               Left="true" 
-                               SideSelected="@SideSelected"
-                               @ref="TutorialFieldLeft"/>
+<MudGrid>
+    <MudItem sm="10">
+        <div class="d-flex flex-column flex-grow-1 gap-4">
+            <div class="d-flex flex-row flex-grow-1 gap-4">
+                @if (CurrentTutorialLevel != null)
+                {
+                        <div class="d-inline-flex pa-4 flex-grow-1 justify-center">
+                        <TutorialField CurrentToturialLevel="@CurrentTutorialLevel" 
+                                        Mode="@Mode" 
+                                        Left="true" 
+                                        SideSelected="@SideSelected"
+                                        @ref="TutorialFieldLeft"/>
+                    </div>
+                    <div class="d-inline-flex pa-4 flex-grow-1 justify-center">
+                        <TutorialField CurrentToturialLevel="@CurrentTutorialLevel" 
+                                        Mode="@Mode" 
+                                        Left="false" 
+                                        SideSelected="@SideSelected"
+                                        @ref="TutorialFieldRight"/>
+                    </div>
+                }
             </div>
-            <div class="d-inline-flex pa-4 flex-grow-1 justify-center">
-                <TutorialField CurrentToturialLevel="@CurrentTutorialLevel" 
-                               Mode="@Mode" 
-                               Left="false" 
-                               SideSelected="@SideSelected"
-                               @ref="TutorialFieldRight"/>
-            </div>
-        }
-    </div>
-    <div class="d-flex flex-row flex-grow-1 gap-4 justify-center">
-        @if (@NextAllowed)
-        {
-            <MudButton OnClick="@NextClicked" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large">
-                Volgende
-            </MudButton>
-        }
-    </div> 
-</div>
+            <div class="d-flex flex-row flex-grow-1 gap-4 justify-center">
+                @if (@NextAllowed)
+                {
+                    <MudButton OnClick="@NextClicked" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large">
+                        Volgende
+                    </MudButton>
+                }
+            </div> 
+        </div>
+    </MudItem>
+    <MudItem sm="2">
+        <div style="width:50%;" class="mx-auto">
+            <MudImage Src="@ImageURL" Fluid="true"/>
+        </div>
+        <div style="width:80%;" class="mx-auto">
+                @if (!string.IsNullOrEmpty(Text))
+            {   
+                    <MudCard Outlined="true">
+                    <MudCardContent>
+                        <MudText Typo="Typo.body1" Align="Align.Center">@Text</MudText>
+                    </MudCardContent>
+                </MudCard>
+            }
+        </div>
+    </MudItem>
+</MudGrid>

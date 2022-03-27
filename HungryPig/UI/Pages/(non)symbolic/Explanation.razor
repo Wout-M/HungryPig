@@ -2,25 +2,7 @@
 
 @if (ShowStep2)
 {
-    <MudGrid style="height:30%">
-        <MudItem sm="9">
-            <div class="d-flex flex-column align-center justify-center mud-height-full">
-                <MudCard Outlined="true">
-                    <MudCardContent>
-                        <MudText Typo="Typo.body1" Align="Align.Center">@Description</MudText>
-                    </MudCardContent>
-                </MudCard>
-                <MudButton Link="symbgame/tutorial" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large" Class="mx-auto my-3">
-                    Start
-                </MudButton>
-            </div>
-        </MudItem>
-        <MudItem sm="@SizeImage">
-            <div class="d-flex align-center justify-center">
-                <MudImage Src="@ImageURL" ObjectFit="ObjectFit.Contain" Height="200"/>
-            </div>
-        </MudItem>
-    </MudGrid>
+   <TextField Mode="@Mode" Description="@Description" ButtonLink="symbgame/tutorial"/>
 }
 else 
 {
@@ -42,7 +24,7 @@ else
         <MudItem sm="4">
             <div class="d-flex flex-column align-center justify-center mud-height-full">
                 <div style="width:50%;" >
-                    <MudImage Src="@ImageURL" Fluid="true"/>
+                    <MudImage Src="images/worm2.jpg" Fluid="true"/>
                 </div>
                 <div style="width:80%;" >
                      <MudCard Outlined="true">
@@ -55,7 +37,6 @@ else
                     Volgende
                 </MudButton>
             </div>
-             
         </MudItem>
     </MudGrid>
 }

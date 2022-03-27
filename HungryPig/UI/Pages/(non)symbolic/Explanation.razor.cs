@@ -7,13 +7,11 @@ namespace HungryPig.UI.Pages._non_symbolic
 {
     partial class Explanation
     {
-        [Inject] private NavigationManager NavigationManager { get; set; }
         [Inject] private IState<SymbGameState> GameState { get; set; }
 
         private SymbMode Mode { get; set; } = SymbMode.Pig;
         private bool ShowStep2 { get; set; }
-        private int SizeImage { get => Mode == SymbMode.Pig ? 2 : 3; }
-        private string ImageURL { get => Mode == SymbMode.Pig ? "images/pig-hungry.png" : "images/worm2.jpg"; }
+        
         private string Description
         {
             get

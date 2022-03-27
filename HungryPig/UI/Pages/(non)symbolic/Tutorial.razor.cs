@@ -13,11 +13,14 @@ namespace HungryPig.UI.Pages._non_symbolic
         [Inject] private NavigationManager NavigationManager { get; set; }
         [Inject] private IState<SymbGameState> GameState { get; set; }
         [Inject] public IDispatcher Dispatcher { get; set; }
-
+        
         private SymbLevel CurrentTutorialLevel { get; set; }
         private SymbMode Mode { get; set; }
         private bool NextAllowed { get; set; }
         private Stopwatch Stopwatch { get; set; } = new();
+
+        private string ImageURL { get; set; }
+        private string Text { get; set; }
 
         private TutorialField TutorialFieldLeft { get; set; }
         private TutorialField TutorialFieldRight { get; set; }
@@ -25,6 +28,7 @@ namespace HungryPig.UI.Pages._non_symbolic
         protected override void OnInitialized()
         {
             Mode = GameState.Value.Game.Mode;
+            ImageURL = Mode == SymbMode.Pig ? "images/pig-happy.png" : "images/worm2.jpg";
             CurrentTutorialLevel = GameState.Value.Game.TutorialLevel1;
 
             Stopwatch.Start();
@@ -46,6 +50,7 @@ namespace HungryPig.UI.Pages._non_symbolic
 
                 TutorialFieldLeft?.SetBorderColor(leftCorrect);
                 TutorialFieldRight?.SetBorderColor(!leftCorrect);
+                SetTextAndImage(correct);
 
                 Dispatcher.Dispatch(new UpdateSymbTutorialLevelAction(CurrentTutorialLevel, CurrentTutorialLevel.Name == "Oefenitem1"));
 
@@ -59,6 +64,7 @@ namespace HungryPig.UI.Pages._non_symbolic
             NextAllowed = false;
             TutorialFieldLeft?.ResetBorderColor();
             TutorialFieldRight?.ResetBorderColor();
+            ResetTextAndImage();
 
             if (CurrentTutorialLevel.Name == "Oefenitem1")
             {
@@ -67,8 +73,33 @@ namespace HungryPig.UI.Pages._non_symbolic
             }
             else
             {
-                NavigationManager.NavigateTo("symbgame/game");
+                NavigationManager.NavigateTo("symbgame/pregame");
             }
+        }
+
+        private void SetTextAndImage(bool correct)
+        {
+            Text = correct
+                ? "Goed zo!"
+                : Mode == SymbMode.Pig
+                    ? "“Bijna! Probeer de kant aan te duiden met het meeste bolletjes"
+                    : "Bijna! Probeer de kant aan te duiden met het cijfer dat het meeste is";
+
+            ImageURL = correct
+                ? Mode == SymbMode.Pig
+                    ? "images/pig-happy.png"
+                    : "images/worm3.jpg"
+                : Mode == SymbMode.Pig
+                    ? "images/pig-hungry.png"
+                    : "images/worm2.jpg";
+        }
+
+        private void ResetTextAndImage()
+        {
+            Text = string.Empty;
+            ImageURL = Mode == SymbMode.Pig
+                ? "images/pig-happy.png"
+                : "images/worm2.jpg";
         }
     }
 }
