@@ -1,0 +1,41 @@
+﻿<div style="width:50%;" class="mx-auto">
+    <MudImage Src="@ImageURL" Fluid="true" />
+</div>
+<div style="width:80%;" class="mx-auto">
+    @if (!string.IsNullOrEmpty(TextPart1))
+    {
+        <MudCard Outlined="true">
+            <MudCardContent>
+                <MudText Typo="Typo.body1" Align="Align.Center">@TextPart1 <span style="@($"color:{Color}; font-weight: bold;")">@ColorText</span> @TextPart2</MudText>
+            </MudCardContent>
+        </MudCard>
+    }
+</div>
+
+
+@code {
+    [Parameter] public string ImageURL { get; set; }
+
+    private string TextPart1 { get; set; }
+    private string TextPart2 { get; set; }
+    private string ColorText { get; set; }
+    private string Color { get; set; }
+
+    public void SetText(DotColor color)
+    {
+        TextPart1 = "Schrijf nu je antwoord in de";
+        Color = color.GetMudColor();
+        ColorText = color.GetDescription().ToUpper();
+        TextPart2 = "kader";
+        StateHasChanged();
+    }
+
+    public void ResetText()
+    {
+        TextPart1 = string.Empty;
+        Color = string.Empty;
+        ColorText = string.Empty;
+        TextPart2 = string.Empty;
+        StateHasChanged();
+    }
+}

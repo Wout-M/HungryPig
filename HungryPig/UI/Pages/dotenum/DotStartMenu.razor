@@ -1,15 +1,29 @@
 ﻿@page "/dotgame"
 
-<div class="d-flex flex-row flex-grow-1 gap-4 pa-4 justify-center">
-    <MudCard Outlined="true" Class="border-solid border-2 mud-border-dark pa-3">
-        <MudCardContent>
-            <MudText Typo="Typo.h4" Align="Align.Center" Class="mb-3">Dot Enumeration</MudText>
-            <MudTextField @bind-Value="Name" Label="Vul hier je naam in" Variant="Variant.Outlined" />
-        </MudCardContent>
-        <MudCardActions>
-            <MudButton OnClick="StartButtonClicked" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large" Class="mx-auto">
-                Start
-            </MudButton>
-        </MudCardActions>
-    </MudCard>
-</div>
+<MudGrid Justify="Justify.Center">
+    <MudItem sm="6">
+        <MudCard Outlined="true" Class="border-solid border-2 mud-border-dark pa-3">
+            <MudCardContent>
+                <MudText Typo="Typo.h4" Align="Align.Center" Class="mb-3">Dot Enumeration</MudText>
+                <MudTextField @bind-Value="Name" Label="Vul hier je naam in" Variant="Variant.Outlined" />
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton OnClick="StartButtonClicked" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large" Class="mx-auto">
+                    Start
+                </MudButton>
+            </MudCardActions>
+        </MudCard>
+    </MudItem>
+    <MudItem sm="4">
+        <div style="width:50%;" class="mx-auto">
+            <MudImage Src="@ImageURL" Fluid="true"/>
+        </div>
+        <div style="width:80%;" class="mx-auto">
+             <MudCard Outlined="true">
+                <MudCardContent>
+                    <MudText Typo="Typo.body1" Align="Align.Center">@Description</MudText>
+                </MudCardContent>
+            </MudCard>
+        </div>
+    </MudItem>
+</MudGrid>

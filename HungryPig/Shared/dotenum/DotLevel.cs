@@ -1,4 +1,5 @@
 ﻿using MudBlazor;
+using System.ComponentModel;
 
 namespace HungryPig.Shared
 {
@@ -14,12 +15,19 @@ namespace HungryPig.Shared
 
     public enum DotColor
     {
+        [Description("zwarte")]
         Black,
+        [Description("paarse")]
         Purple,
+        [Description("blauwe")]
         Blue,
+        [Description("groene")]
         Green,
+        [Description("gele")]
         Yellow,
+        [Description("oranje")]
         Orange,
+        [Description("rode")]
         Red
     }
 }

@@ -1,23 +1,20 @@
 ﻿@page "/dotgame/end"
 
-<h3>End</h3>
-
  <div class="d-flex flex-grow-1 justify-center align-content-center">
-            <MudCard Outlined="true" Class="border-solid border-2 mud-border-dark pa-3">
-                <MudCardContent>
-                    <MudText Typo="Typo.h4" Align="Align.Center" Class="mb-3">Resultaten</MudText>
-                    <MudText Typo="Typo.body1" Align="Align.Center">Download het resultaat of start een nieuw spel</MudText>
-                </MudCardContent>
-                <MudCardActions>
-                    <div class="mx-auto">
-                        <MudButton OnClick="DownloadClicked" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large">
-                            Download data
-                        </MudButton>
-                        <MudButton OnClick="RestartClicked" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large">
-                            Restart
-                    </MudButton>
-                    </div>
-                </MudCardActions>
-            </MudCard>
-        </div>
-
+    <MudCard Outlined="true" Class="border-solid border-2 mud-border-dark pa-3">
+        <MudCardContent>
+            <MudText Typo="Typo.h4" Align="Align.Center" Class="mb-3">Resultaten</MudText>
+            <MudText Typo="Typo.body1" Align="Align.Center">Download het resultaat of start een nieuw spel</MudText>
+        </MudCardContent>
+        <MudCardActions>
+            <div class="mx-auto">
+                <MudButton OnClick="DownloadClicked" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large">
+                    Download data
+                </MudButton>
+                <MudButton OnClick="RestartClicked" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large">
+                    Restart
+            </MudButton>
+            </div>
+        </MudCardActions>
+    </MudCard>
+</div>

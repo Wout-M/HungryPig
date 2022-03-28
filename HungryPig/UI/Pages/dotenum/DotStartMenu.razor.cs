@@ -9,13 +9,14 @@ namespace HungryPig.UI.Pages.dotenum
         [Inject] private NavigationManager NavigationManager { get; set; }
         [Inject] public IDispatcher Dispatcher { get; set; }
 
-        protected string Name { get; set; } = string.Empty;
-
+        private string Name { get; set; } = string.Empty;
+        private string ImageURL { get; } = "images/dog.png";
+        private string Description { get; } = "Help jij mij om het juiste aantal bolletjes te vinden?";
 
         private void StartButtonClicked()
         {
             Dispatcher.Dispatch(new InitDotGameAction(Name));
-            NavigationManager.NavigateTo("dotgame/tutorial");
+            NavigationManager.NavigateTo("dotgame/explanation");
         }
     }
 }

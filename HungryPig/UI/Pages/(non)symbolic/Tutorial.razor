@@ -6,19 +6,19 @@
             <div class="d-flex flex-row flex-grow-1 gap-4">
                 @if (CurrentTutorialLevel != null)
                 {
-                        <div class="d-inline-flex pa-4 flex-grow-1 justify-center">
+                    <div class="d-inline-flex pa-4 flex-grow-1 justify-center">
                         <TutorialField CurrentToturialLevel="@CurrentTutorialLevel" 
-                                        Mode="@Mode" 
-                                        Left="true" 
-                                        SideSelected="@SideSelected"
-                                        @ref="TutorialFieldLeft"/>
+                                       Mode="@Mode" 
+                                       Left="true" 
+                                       SideSelected="@SideSelected"
+                                       @ref="TutorialFieldLeft"/>
                     </div>
                     <div class="d-inline-flex pa-4 flex-grow-1 justify-center">
                         <TutorialField CurrentToturialLevel="@CurrentTutorialLevel" 
-                                        Mode="@Mode" 
-                                        Left="false" 
-                                        SideSelected="@SideSelected"
-                                        @ref="TutorialFieldRight"/>
+                                       Mode="@Mode" 
+                                       Left="false" 
+                                       SideSelected="@SideSelected"
+                                       @ref="TutorialFieldRight"/>
                     </div>
                 }
             </div>
@@ -37,9 +37,9 @@
             <MudImage Src="@ImageURL" Fluid="true"/>
         </div>
         <div style="width:80%;" class="mx-auto">
-                @if (!string.IsNullOrEmpty(Text))
+            @if (!string.IsNullOrEmpty(Text))
             {   
-                    <MudCard Outlined="true">
+                <MudCard Outlined="true">
                     <MudCardContent>
                         <MudText Typo="Typo.body1" Align="Align.Center">@Text</MudText>
                     </MudCardContent>

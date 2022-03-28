@@ -18,7 +18,10 @@ namespace HungryPig.UI.Pages.dotenum
         private bool NextAllowed { get; set; }
         private Stopwatch Stopwatch { get; set; } = new();
 
+        private string ImageURL { get; } = "images/dog.png";
+
         private DotGameField GameField { get; set; }
+        private DotSideTip DotSideTip { get; set; }
 
         protected override async void OnInitialized()
         {
@@ -38,6 +41,7 @@ namespace HungryPig.UI.Pages.dotenum
                 CurrentLevel.ReactionTime = Stopwatch.ElapsedMilliseconds;
 
                 GameField?.ResetImage();
+                DotSideTip?.SetText(CurrentLevel.Color);
 
                 Dispatcher.Dispatch(new UpdateDotLevelAction(CurrentLevel));
 
@@ -53,9 +57,10 @@ namespace HungryPig.UI.Pages.dotenum
         private async Task NextClicked()
         {
             NextAllowed = false;
+            DotSideTip?.ResetText();
             if (GameState.Value.Game.CurrentLevelId == GameState.Value.Game.Levels.Count)
             {
-                NavigationManager.NavigateTo("dotgame/end");
+                NavigationManager.NavigateTo("dotgame/postgame");
             }
             else
             {

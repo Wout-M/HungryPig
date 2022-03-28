@@ -18,7 +18,10 @@ namespace HungryPig.UI.Pages.dotenum
         private bool NextAllowed { get; set; }
         private Stopwatch Stopwatch { get; set; } = new();
 
+        private string ImageURL { get; } = "images/dog.png";
+
         private DotGameField TutorialField { get; set; }
+        private DotSideTip DotSideTip { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
@@ -37,6 +40,7 @@ namespace HungryPig.UI.Pages.dotenum
                 CurrentTutorialLevel.ReactionTime = Stopwatch.ElapsedMilliseconds;
 
                 TutorialField?.ResetImage();
+                DotSideTip?.SetText(CurrentTutorialLevel.Color); 
 
                 Dispatcher.Dispatch(new UpdateDotTutorialLevelAction(CurrentTutorialLevel));
 
@@ -48,7 +52,8 @@ namespace HungryPig.UI.Pages.dotenum
         private void NextClicked()
         {
             NextAllowed = false;
-            NavigationManager.NavigateTo("dotgame/game");
+            DotSideTip?.ResetText();
+            NavigationManager.NavigateTo("dotgame/pregame");
         }
     }
 }
