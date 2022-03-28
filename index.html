@@ -8,10 +8,15 @@
     <base href="/HungryPig/" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+    <link href="index.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div id="app">Loading...</div>
+    <div id="app">
+        <div class="d-flex flex-grow-1 justify-center align-center align-content-center mud-height-full">
+            <div class="spinner"></div>
+        </div>
+    </div>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
@@ -20,6 +25,11 @@
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
+    <script>
+        window.applyStyleForElement = function (style) {
+            document.body.style[style.attrib] = style.value;
+        }
+    </script>
 </body>
 
 </html>
