@@ -1,0 +1,35 @@
+﻿
+body, html, #app {
+    height: 100%;
+}
+
+
+
+.spinner {
+    width: 88px;
+    height: 88px;
+    display: grid;
+    animation: spinner-plncf9 5.6s infinite;
+}
+
+    .spinner::before,
+    .spinner::after {
+        content: "";
+        grid-area: 1/1;
+        border: 14px solid;
+        border-radius: 50%;
+        border-color: #474bff #474bff #0000 #0000;
+        mix-blend-mode: darken;
+        animation: spinner-plncf9 1.4s infinite linear;
+    }
+
+    .spinner::after {
+        border-color: #0000 #0000 #dbdcef #dbdcef;
+        animation-direction: reverse;
+    }
+
+@keyframes spinner-plncf9 {
+    100% {
+        transform: rotate(1turn);
+    }
+}

@@ -5,7 +5,7 @@
 <MudSnackbarProvider />
 
 <MudLayout>
-   <MudAppBar Elevation="0">
+    <MudAppBar Elevation="0">
         <MudText Color="Color.Inherit" Typo="Typo.button">Hungry Pig</MudText>
         <MudSpacer />
         <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Link="https://github.com/Wout-M" Target="_blank" />
@@ -16,3 +16,26 @@
         </MudContainer>
     </MudMainContent>
 </MudLayout>
+
+@inject IJSRuntime JSRuntime
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        var styles = new List<(string, string)>()
+        {
+            ("background-color", "transparent"),
+            ("background-image", "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 230'%3E%3Cpath fill='%238BC34A' fill-opacity='1' d='M0 224L48 208C96 192 192 160 288 144C384 128 480 128 576 154.7C672 181 768 235 864 224C960 213 1056 139 1152 117.3C1248 96 1344 128 1392 144L1440 160L1440 320L1392 320C1344 320 1248 320 1152 320C1056 320 960 320 864 320C768 320 672 320 576 320C480 320 384 320 288 320C192 320 96 320 48 320L0 320Z'%3E%3C/path%3E%3C/svg%3E\")"),
+            ("background-repeat", "no-repeat"),
+            ("background-attachment", "fixed"),
+            ("background-position", "bottom")
+        };
+
+        foreach(var style in styles)
+        {
+            await JSRuntime.InvokeVoidAsync("applyStyleForElement", new { attrib = style.Item1, value = style.Item2 });
+        }
+        
+    }
+}
