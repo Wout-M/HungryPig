@@ -1,7 +1,9 @@
-﻿<MudPaper Class="@($"border-solid border-4 {BorderColor} pa-4 flex-grow-1")">
-    <GameImage Left="@Left" 
-               Mode="@Mode" 
-               Name="@CurrentToturialLevel?.Name"
-               Amount="@((Left ? CurrentToturialLevel?.Left : CurrentToturialLevel?.Right) ?? 0)"
-               OnImageClicked="@OnImageClicked"/>
+﻿<MudPaper Class="@($"border-solid border-4 {BorderColor} pa-4")">
+    <div class="d-flex flex-row flex-grow-1 gap-4 justify-center" style="max-height: 60vh">
+        <GameImage Left="@Left" 
+                   Mode="@Mode" 
+                   Name="@CurrentToturialLevel?.Name"
+                   Amount="@((Left ? CurrentToturialLevel?.Left : CurrentToturialLevel?.Right) ?? 0)"
+                   OnImageClicked="@OnImageClicked"/>
+    </div>
 </MudPaper>

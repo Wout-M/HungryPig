@@ -2,35 +2,33 @@
 
 <MudGrid Justify="Justify.Center">
     <MudItem sm="10">
-        <div class="d-flex flex-column flex-grow-1 gap-4">
-            <div class="d-flex flex-row flex-grow-1 gap-4">
-                @if (CurrentTutorialLevel != null)
-                {
-                    <div class="d-inline-flex pa-4 flex-grow-1 justify-center">
-                        <TutorialField CurrentToturialLevel="@CurrentTutorialLevel" 
-                                       Mode="@Mode" 
-                                       Left="true" 
-                                       SideSelected="@SideSelected"
-                                       @ref="TutorialFieldLeft"/>
-                    </div>
-                    <div class="d-inline-flex pa-4 flex-grow-1 justify-center">
-                        <TutorialField CurrentToturialLevel="@CurrentTutorialLevel" 
-                                       Mode="@Mode" 
-                                       Left="false" 
-                                       SideSelected="@SideSelected"
-                                       @ref="TutorialFieldRight"/>
-                    </div>
-                }
-            </div>
-            <div class="d-flex flex-row flex-grow-1 gap-4 justify-center">
-                @if (@NextAllowed)
-                {
+        <MudGrid>
+            <MudItem xs="12" Style="@($"visibility: {(NextAllowed ? "visible" : "hidden")}")" >
+                <div class="d-flex flex-row flex-grow-1 gap-4 justify-center">
                     <MudButton OnClick="@NextClicked" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large">
                         Volgende
                     </MudButton>
-                }
-            </div> 
-        </div>
+                </div> 
+            </MudItem>
+            @if (CurrentTutorialLevel != null)
+        {
+            <MudItem xs="6">
+                <TutorialField CurrentToturialLevel="@CurrentTutorialLevel" 
+                                Mode="@Mode" 
+                                Left="true" 
+                                SideSelected="@SideSelected"
+                                @ref="TutorialFieldLeft"/>
+            </MudItem>
+            <MudItem xs="6">
+                <TutorialField CurrentToturialLevel="@CurrentTutorialLevel" 
+                                Mode="@Mode" 
+                                Left="false" 
+                                SideSelected="@SideSelected"
+                                @ref="TutorialFieldRight"/>
+            </MudItem>
+        }
+        </MudGrid>
+        
     </MudItem>
     <MudItem sm="2">
         <div style="max-width:50%;" class="mx-auto d-flex justify-center flex-grow-1">
