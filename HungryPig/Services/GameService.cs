@@ -54,7 +54,7 @@ namespace HungryPig.Services
 
         #region dotgame
 
-        private static readonly List<int> Amounts = new() { 3, 9, 5, 4, 1, 8, 2, 7, 3, 6 };
+        private static readonly List<int> Amounts = new() { 3, 9, 5, 4, 1, 8, 2, 7, 3, 6, 5, 1, 6, 4, 9, 2, 7, 8 };
 
         public DotGame InitDotGame(string name)
         {

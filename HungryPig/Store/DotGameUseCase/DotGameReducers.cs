@@ -6,10 +6,10 @@ namespace HungryPig.Store.DotGameUseCase
     public class DotGameReducers
     {
         [ReducerMethod]
-        public static DotGameState InitSymbGameAction(DotGameState state, InitDotGameResultAction action) => new DotGameState(action.Game);
+        public static DotGameState InitDotGameAction(DotGameState state, InitDotGameResultAction action) => new DotGameState(action.Game);
 
         [ReducerMethod]
-        public static DotGameState UpdateSymbTutorialLevelAction(DotGameState state, UpdateDotTutorialLevelAction action)
+        public static DotGameState UpdateDotTutorialLevelAction(DotGameState state, UpdateDotTutorialLevelAction action)
         {
             var game = state.Game;
             game.TutorialLevel = action.TutorialLevel;
@@ -18,7 +18,7 @@ namespace HungryPig.Store.DotGameUseCase
         }
 
         [ReducerMethod]
-        public static DotGameState UpdateSymbLevelAction(DotGameState state, UpdateDotLevelAction action)
+        public static DotGameState UpdateDotLevelAction(DotGameState state, UpdateDotLevelAction action)
         {
             var game = state.Game;
             
