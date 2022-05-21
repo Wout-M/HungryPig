@@ -14,6 +14,8 @@ namespace HungryPig.UI.Pages.dotenum
         [Inject] private IState<DotGameState> GameState { get; set; }
         [Inject] public IDispatcher Dispatcher { get; set; }
 
+        [CascadingParameter] public EventCallback<(bool Enabled, bool IsSymb)> EnableStopButton { get; set; }
+
         private DotLevel CurrentLevel { get; set; }
         private bool NextAllowed { get; set; }
         private Stopwatch Stopwatch { get; set; } = new();
@@ -30,6 +32,7 @@ namespace HungryPig.UI.Pages.dotenum
 
             await Task.Delay(100);
             SetNewLevel();
+            await EnableStopButton.InvokeAsync((true, false));
         }
 
 
@@ -60,6 +63,7 @@ namespace HungryPig.UI.Pages.dotenum
             DotSideTip?.ResetText();
             if (GameState.Value.Game.CurrentLevelId == GameState.Value.Game.Levels.Count)
             {
+                await EnableStopButton.InvokeAsync((false, false));
                 NavigationManager.NavigateTo("dotgame/postgame");
             }
             else

@@ -9,9 +9,9 @@ namespace HungryPig.Shared
         public int Left { get; set; }
         public int Right { get; set; }
 
-        public long ReactionTime { get; set; }
-        public Side SideSelected { get; set; }
-        public bool Correct { get; set; }
+        public long? ReactionTime { get; set; }
+        public Side? SideSelected { get; set; }
+        public bool? Correct { get; set; }
     }
 
     public enum Side

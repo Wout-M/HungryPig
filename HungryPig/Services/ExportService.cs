@@ -61,7 +61,7 @@ namespace HungryPig.Services
             AddDataColumn(worksheet, level.Name, row, ref column);
             if (pigMode)
                 AddDataColumn(worksheet, level.Subetizing, row, ref column);
-            AddDataColumn(worksheet, level.SideSelected.GetDescription(), row, ref column);
+            AddDataColumn(worksheet, level.SideSelected?.GetDescription() ?? string.Empty, row, ref column);
             AddDataColumn(worksheet, level.Correct, row, ref column);
             AddDataColumn(worksheet, level.ReactionTime, row, ref column);
         }

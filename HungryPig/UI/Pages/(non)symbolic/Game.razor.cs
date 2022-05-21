@@ -14,6 +14,8 @@ namespace HungryPig.UI.Pages._non_symbolic
         [Inject] private IState<SymbGameState> GameState { get; set; }
         [Inject] public IDispatcher Dispatcher { get; set; }
 
+        [CascadingParameter] public EventCallback<(bool Enabled, bool IsSymb)> EnableStopButton { get; set; }
+
         private SymbLevel CurrentLevel { get; set; }
         private SymbMode Mode { get; set; }
         private bool NextAllowed { get; set; }
@@ -32,6 +34,7 @@ namespace HungryPig.UI.Pages._non_symbolic
 
             await Task.Delay(100);
             await SetNewLevel();
+            await EnableStopButton.InvokeAsync((true, true));
         }
 
 
@@ -63,12 +66,9 @@ namespace HungryPig.UI.Pages._non_symbolic
         {
             NextAllowed = false;
             LevelFinished = false;
-            if (GameState.Value.Game.CurrentLevelId == (GameState.Value.Game.Levels.Count / 2))
+            if (GameState.Value.Game.CurrentLevelId == GameState.Value.Game.Levels.Count)
             {
-                NavigationManager.NavigateTo("symbgame/pause");
-            }
-            else if (GameState.Value.Game.CurrentLevelId == GameState.Value.Game.Levels.Count)
-            {
+                await EnableStopButton.InvokeAsync((false, true));
                 NavigationManager.NavigateTo("symbgame/postgame");
             }
             else

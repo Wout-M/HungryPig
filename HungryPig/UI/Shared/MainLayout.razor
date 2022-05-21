@@ -8,18 +8,42 @@
     <MudAppBar Elevation="0">
         <MudText Color="Color.Inherit" Typo="Typo.button">Hungry Pig</MudText>
         <MudSpacer />
+        @if (Enabled)
+        {
+            <MudIconButton Icon="@Icons.Filled.StopCircle" Color="Color.Inherit" OnClick="StopButtonClicked" />
+        }
         <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Link="https://github.com/Wout-M" Target="_blank" />
     </MudAppBar>
     <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.Large" Style="max-height:100%" Class="pt-16">
-            @Body
+            <CascadingValue Value=EnableStopButton>
+                @Body
+            </CascadingValue>
         </MudContainer>
     </MudMainContent>
 </MudLayout>
 
 @inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
 
 @code {
+
+    private EventCallback<(bool Enabled, bool IsSymb)> _enableStopButton = EventCallback<(bool Enabled, bool IsSymb)>.Empty;
+    public EventCallback<(bool Enabled, bool IsSymb)> EnableStopButton
+    {
+        get
+        {
+            if (_enableStopButton.Equals(EventCallback<(bool Enabled, bool IsSymb)>.Empty))
+            {
+                _enableStopButton = EventCallback.Factory.Create<(bool Enabled, bool IsSymb)>(this, EnableButton);
+            }
+
+            return _enableStopButton;
+        }
+    }
+
+    private bool Enabled { get; set; }
+    private bool IsSymb { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -36,6 +60,18 @@
         {
             await JSRuntime.InvokeVoidAsync("applyStyleForElement", new { attrib = style.Item1, value = style.Item2 });
         }
-        
+
+    }
+
+    public void EnableButton((bool Enabled, bool IsSymb) enableParams)
+    {
+        Enabled = enableParams.Enabled;
+        IsSymb = enableParams.IsSymb;
+    } 
+
+    public void StopButtonClicked()
+    {
+        Enabled = false;
+        NavigationManager.NavigateTo($"{(IsSymb ? "symbgame" : "dotgame" )}/postgame");
     }
 }
