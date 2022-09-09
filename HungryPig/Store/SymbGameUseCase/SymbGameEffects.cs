@@ -16,7 +16,7 @@ namespace HungryPig.Store.SymbGameUseCase
         [EffectMethod]
         public Task HandleInitSymbGameAction(InitSymbGameAction action, IDispatcher dispatcher)
         {
-            var game = _gameservice.InitGame(action.Mode, action.Name);
+            var game = _gameservice.InitGame(action.Mode, action.Name, action.IsLong);
             dispatcher.Dispatch(new InitSymbGameResultAction(game));
             return Task.CompletedTask;
         }

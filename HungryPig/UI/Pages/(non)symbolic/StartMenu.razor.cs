@@ -13,6 +13,7 @@ namespace HungryPig.UI.Pages._non_symbolic
 
         private SymbMode Mode { get; set; } = SymbMode.Pig;
         private string Name { get; set; } = string.Empty;
+        private bool IsLong { get; set; } = false;
 
         private string Title { get => Mode.GetDescription(); }
         private string ImageURL { get => Mode == SymbMode.Pig ? "images/pig-happy.png" : "images/worm1.jpg"; }
@@ -29,7 +30,7 @@ namespace HungryPig.UI.Pages._non_symbolic
 
         private void StartButtonClicked()
         {
-            Dispatcher.Dispatch(new InitSymbGameAction(Mode, Name));
+            Dispatcher.Dispatch(new InitSymbGameAction(Mode, Name, IsLong));
             NavigationManager.NavigateTo("symbgame/explanation");
         }
     }
