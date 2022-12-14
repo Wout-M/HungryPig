@@ -6,7 +6,6 @@ namespace HungryPig.UI.Components.dotenum
     partial class DotGameField : ComponentBase
     {
         [Parameter] public DotLevel CurrentLevel { get; set; }
-        [Parameter] public Action SideSelected { get; set; }
 
         private string ImageName { get; set; }
 
@@ -14,8 +13,6 @@ namespace HungryPig.UI.Components.dotenum
         {
             SetImage();
         }
-
-        private void OnImageClicked() => SideSelected?.Invoke();
 
         public void SetImage() => ImageName = CurrentLevel?.Name ?? string.Empty;
 
