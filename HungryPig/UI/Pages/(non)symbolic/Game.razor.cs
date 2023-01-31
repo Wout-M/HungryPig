@@ -4,6 +4,7 @@ using HungryPig.Store.SymbGameUseCase;
 using HungryPig.Store.SymbGameUseCase.Actions;
 using HungryPig.UI.Components._non_symbolic;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using System.Diagnostics;
 
 namespace HungryPig.UI.Pages._non_symbolic
@@ -26,6 +27,8 @@ namespace HungryPig.UI.Pages._non_symbolic
         private GameField GameFieldLeft { get; set; }
         private GameField GameFieldRight { get; set; }
 
+        private ElementReference KeyDiv { get; set; }
+
         protected override async void OnInitialized()
         {
             CurrentLevel = GameState.Value.Game.Levels[GameState.Value.Game.CurrentLevelId];
@@ -37,6 +40,36 @@ namespace HungryPig.UI.Pages._non_symbolic
             await EnableStopButton.InvokeAsync((true, true));
         }
 
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await KeyDiv.FocusAsync();
+        }
+
+        private async void HandleKeyDown(KeyboardEventArgs e)
+        {
+            if (LevelSet)
+            {
+                switch (e.Key.ToLower())
+                {
+                    case "l":
+                        SideSelected(CurrentLevel.Right > CurrentLevel.Left, Side.Right);
+                        break;
+                    case "s":
+                        SideSelected(CurrentLevel.Left > CurrentLevel.Right, Side.Left);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (LevelFinished && NextAllowed)
+            {
+                if (e.Key.ToLower() == "v")
+                {
+                    await NextClicked();
+                }
+            }
+        }
 
         private void SideSelected(bool correct, Side side)
         {

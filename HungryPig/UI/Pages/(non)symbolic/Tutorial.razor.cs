@@ -4,6 +4,7 @@ using HungryPig.Store.SymbGameUseCase;
 using HungryPig.Store.SymbGameUseCase.Actions;
 using HungryPig.UI.Components._non_symbolic;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using System.Diagnostics;
 
 namespace HungryPig.UI.Pages._non_symbolic
@@ -25,6 +26,8 @@ namespace HungryPig.UI.Pages._non_symbolic
         private TutorialField TutorialFieldLeft { get; set; }
         private TutorialField TutorialFieldRight { get; set; }
 
+        private ElementReference KeyDiv { get; set; }
+
         protected override void OnInitialized()
         {
             Mode = GameState.Value.Game.Mode;
@@ -32,6 +35,37 @@ namespace HungryPig.UI.Pages._non_symbolic
             CurrentTutorialLevel = GameState.Value.Game.TutorialLevel1;
 
             Stopwatch.Start();
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await KeyDiv.FocusAsync();
+        }
+
+        private void HandleKeyDown(KeyboardEventArgs e)
+        {
+            if (!NextAllowed)
+            {
+                switch (e.Key.ToLower())
+                {
+                    case "l":
+                        SideSelected(CurrentTutorialLevel.Right > CurrentTutorialLevel.Left, Side.Right);
+                        break;
+                    case "s":
+                        SideSelected(CurrentTutorialLevel.Left > CurrentTutorialLevel.Right, Side.Left);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (NextAllowed)
+            {
+                if (e.Key.ToLower() == "v")
+                {
+                    NextClicked();
+                }
+            }
         }
 
         private void SideSelected(bool correct, Side side)

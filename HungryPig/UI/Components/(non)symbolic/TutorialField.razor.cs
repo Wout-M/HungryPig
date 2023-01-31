@@ -16,7 +16,7 @@ namespace HungryPig.UI.Components._non_symbolic
         {
             bool correct = (left && CurrentToturialLevel.Left > CurrentToturialLevel.Right) ||
                            (!left && CurrentToturialLevel.Right > CurrentToturialLevel.Left);
-            
+
             SideSelected?.Invoke(correct, left ? Side.Left : Side.Right);
         }
 

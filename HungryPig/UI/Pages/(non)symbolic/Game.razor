@@ -1,6 +1,6 @@
 ﻿@page "/symbgame/game"
 
-<div class="d-flex flex-column flex-grow-1 gap-4"> 
+<div class="d-flex flex-column flex-grow-1 gap-4" @onkeydown="HandleKeyDown" @ref="KeyDiv" tabindex="0"> 
     <MudGrid Justify="Justify.Center">
         <MudItem xs="12" Style="@($"visibility: {(NextAllowed ? "visible" : "hidden")}")" >
             <div class="d-flex flex-row flex-grow-1 gap-4 justify-center">
@@ -16,15 +16,15 @@
                             Mode="@Mode" 
                             Left="true" 
                             SideSelected="@SideSelected"
-                            @ref="GameFieldLeft"/>
+                            @ref="GameFieldLeft" />
             </MudItem>
             <MudItem xs="6">
                 <GameField CurrentLevel="@CurrentLevel"
                             Mode="@Mode" 
                             Left="false" 
                             SideSelected="@SideSelected"
-                            @ref="GameFieldRight"/>
+                            @ref="GameFieldRight" />
             </MudItem>
         }
-        </MudGrid>
+     </MudGrid>
 </div>

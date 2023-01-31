@@ -1,48 +1,50 @@
 ﻿@page "/symbgame/tutorial"
 
-<MudGrid Justify="Justify.Center">
-    <MudItem sm="10">
-        <MudGrid>
-            <MudItem xs="12" Style="@($"visibility: {(NextAllowed ? "visible" : "hidden")}")" >
-                <div class="d-flex flex-row flex-grow-1 gap-4 justify-center">
-                    <MudButton OnClick="@NextClicked" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large">
-                        Volgende
-                    </MudButton>
-                </div> 
-            </MudItem>
-            @if (CurrentTutorialLevel != null)
-        {
-            <MudItem xs="6">
-                <TutorialField CurrentToturialLevel="@CurrentTutorialLevel" 
-                                Mode="@Mode" 
-                                Left="true" 
-                                SideSelected="@SideSelected"
-                                @ref="TutorialFieldLeft"/>
-            </MudItem>
-            <MudItem xs="6">
-                <TutorialField CurrentToturialLevel="@CurrentTutorialLevel" 
-                                Mode="@Mode" 
-                                Left="false" 
-                                SideSelected="@SideSelected"
-                                @ref="TutorialFieldRight"/>
-            </MudItem>
-        }
-        </MudGrid>
-        
-    </MudItem>
-    <MudItem sm="2">
-        <div style="max-width:50%;" class="mx-auto d-flex justify-center flex-grow-1">
-            <MudImage Src="@ImageURL" Fluid="true" style="max-height:150px"/>
-        </div>
-         <div style="max-width:80%;" class="mx-auto">
-            @if (!string.IsNullOrEmpty(Text))
-            {   
-                <MudCard Outlined="true">
-                    <MudCardContent>
-                        <MudText Typo="Typo.body1" Align="Align.Center">@Text</MudText>
-                    </MudCardContent>
-                </MudCard>
-            }
-        </div>
-    </MudItem>
-</MudGrid>
+<div @onkeydown="HandleKeyDown" @ref="KeyDiv" tabindex="0">
+    <MudGrid Justify="Justify.Center">
+        <MudItem sm="10">
+            <MudGrid>
+                <MudItem xs="12" Style="@($"visibility: {(NextAllowed ? "visible" : "hidden")}")">
+                    <div class="d-flex flex-row flex-grow-1 gap-4 justify-center">
+                        <MudButton OnClick="@NextClicked" Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large">
+                            Volgende
+                        </MudButton>
+                    </div>
+                </MudItem>
+                @if (CurrentTutorialLevel != null)
+                {
+                    <MudItem xs="6">
+                        <TutorialField CurrentToturialLevel="@CurrentTutorialLevel"
+                                   Mode="@Mode"
+                                   Left="true"
+                                   SideSelected="@SideSelected"
+                                   @ref="TutorialFieldLeft" />
+                    </MudItem>
+                    <MudItem xs="6">
+                        <TutorialField CurrentToturialLevel="@CurrentTutorialLevel"
+                                   Mode="@Mode"
+                                   Left="false"
+                                   SideSelected="@SideSelected"
+                                   @ref="TutorialFieldRight" />
+                    </MudItem>
+                }
+            </MudGrid>
+
+        </MudItem>
+        <MudItem sm="2">
+            <div style="max-width:50%;" class="mx-auto d-flex justify-center flex-grow-1">
+                <MudImage Src="@ImageURL" Fluid="true" style="max-height:150px" />
+            </div>
+            <div style="max-width:80%;" class="mx-auto">
+                @if (!string.IsNullOrEmpty(Text))
+                {
+                    <MudCard Outlined="true">
+                        <MudCardContent>
+                            <MudText Typo="Typo.body1" Align="Align.Center">@Text</MudText>
+                        </MudCardContent>
+                    </MudCard>
+                }
+            </div>
+        </MudItem>
+    </MudGrid>
+</div>
